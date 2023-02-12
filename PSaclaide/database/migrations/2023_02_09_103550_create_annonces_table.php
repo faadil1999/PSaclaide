@@ -19,6 +19,12 @@ return new class extends Migration
             $table->string('description');
             $table->string('author');
             $table->timestamps();
+
+            $table->unsignedBigInteger('matiere_id');
+            $table->foreign('matiere_id')->references('id')->on('matieres');
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

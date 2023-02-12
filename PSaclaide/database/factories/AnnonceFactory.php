@@ -18,12 +18,11 @@ class AnnonceFactory extends Factory
     public function definition()
     {
         return [
-            
-                'title' =>fake()->word,
-                'description' => fake()->word,
-                'author'=> fake()->word,
-                
-         
+            'title'       => fake()->word,
+            'description' => fake()->word,
+            'author'      => fake()->word,
+            'matiere_id'  => fake()->numberBetween(1,5),
+            'user_id'     => fake()->numberBetween(1,10)   
         ];
     }
 }
