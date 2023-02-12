@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('image');
             $table->timestamps();
 
-            $table->unsignedBigInteger('departement_id');
-            $table->foreign('departement_id')->references('id')->on('departements');
         });
     }
 

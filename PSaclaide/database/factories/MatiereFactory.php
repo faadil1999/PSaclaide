@@ -19,7 +19,6 @@ class MatiereFactory extends Factory
         return [
             'name'           => fake()->word,
             'image'          => fake()->url(),
-            'departement_id' => fake()->numberBetween(1,5)
         ];
     }
 }

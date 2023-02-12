@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Annonce extends Model
 {
     use HasFactory;
+
+    public function matiere()
+    {
+        return $this->belongsTo(Matiere::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
