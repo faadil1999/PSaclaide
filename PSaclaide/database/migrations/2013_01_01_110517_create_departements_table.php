@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Departement;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,13 +14,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('matieres', function (Blueprint $table) {
+        Schema::disableForeignKeyConstraints();
+        Schema::create('departements', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('picture');
+            $table->unsignedInteger('number_study_years');
             $table->timestamps();
-
         });
+        
     }
 
     /**
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matieres');
+        Schema::dropIfExists('departements');
     }
 };

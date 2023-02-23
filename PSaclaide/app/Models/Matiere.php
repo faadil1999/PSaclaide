@@ -14,4 +14,13 @@ class Matiere extends Model
         return $this->hasMany(Annonce::class);
     }
 
+    public function departements()
+    {
+        return $this->belongsToMany(Departement::class);
+    }
+
+    public function sousMatiere()
+    {
+        return $this->hasMany(SousMatiere::class);
+    }
 }

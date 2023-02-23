@@ -14,8 +14,18 @@ class Annonce extends Model
         return $this->belongsTo(Matiere::class);
     }
 
+    public function sousMatieres()
+    {
+        return $this->belongsToMany(SousMatiere::class);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function annonceType()
+    {
+        return $this->morphTo();
     }
 }

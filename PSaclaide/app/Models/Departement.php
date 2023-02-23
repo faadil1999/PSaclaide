@@ -16,6 +16,6 @@ class Departement extends Model
 
     public function matieres()
     {
-        return $this->hasMany(Matiere::class);
+        return $this->belongsToMany(Matiere::class);
     }
 }
