@@ -12,3 +12,6 @@
 
 - Générer clé    : *php artisan key:generate* (accéder au serveur)
 - Lancer serveur : *php artisan serve*
+- Chemin page web: *127.0.0.1:8000*
+
+### Commandes pour créer modèles base de données
