@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
+        // Schema::disableForeignKeyConstraints();
         Schema::create('departement_matiere', function (Blueprint $table) {
             $table->id();
             $table->foreignId('departement_id')->constrained()->onDelete('cascade'); //Autre façon créé clé étrangère

@@ -14,7 +14,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
+        // Schema::disableForeignKeyConstraints();
         Schema::create('departements', function (Blueprint $table) {
             $table->id();
             $table->string('name');

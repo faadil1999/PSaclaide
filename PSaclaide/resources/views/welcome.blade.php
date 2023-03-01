@@ -47,29 +47,7 @@
     <div id="app">
     <main class="main" id="top">
        
-            <section class="bg-primary py-2 d-none d-sm-block">
-
-                <div class="container">
-                  <div class="row align-items-center">
-                    <div class="col-auto d-none d-lg-block">
-                      <p class="my-2 fs--1"><i class="fas fa-map-marker-alt me-3"></i><span>1600 Amphitheatre Parkway, CA 94043 </span></p>
-                    </div>
-                    <div class="col-auto ms-md-auto order-md-2 d-none d-sm-block">
-                      <ul class="list-unstyled list-inline my-2">
-                        <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-facebook-f text-900"></i></a></li>
-                        <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-pinterest text-900"></i></a></li>
-                        <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-twitter text-900"></i></a></li>
-                        <li class="list-inline-item"><a class="text-decoration-none" href="#!"><i class="fab fa-instagram text-900"> </i></a></li>
-                      </ul>
-                    </div>
-                    <div class="col-auto">
-                      <p class="my-2 fs--1"><i class="fas fa-envelope me-3"></i><a class="text-900" href="mailto:vctung@outlook.com">vctung@outlook.com </a></p>
-                    </div>
-                  </div>
-                </div>
-                <!-- end of .container-->
-        
-              </section>
+         
 
             <nav-bar></nav-bar>
             
@@ -85,28 +63,7 @@
                 </div>
               </section>
 
-              <section class="py-0" style="margin-top:-5.8rem">
-
-                <div class="container">
-                  <div class="row">
-                    <div class="card card-span bg-secondary">
-                      <div class="card-body">
-                        <div class="row flex-center gx-0">
-                          <div class="col-lg-4 col-xl-2 text-center text-xl-start"><img src="assets/img/gallery/funfacts.png" width="170" alt="..." /></div>
-                          <div class="col-lg-8 col-xl-4">
-                            <h1 class="text-light fs-lg-4 fs-xl-5">Upcoming Our <span class="text-primary">Basic in Python </span>Course!</h1>
-                          </div>
-                          <div class="col-lg-12 col-xl-6">
-                            <h1 class="display-1 text-light text-center text-xl-end">11 : 02 : 45 : 21</h1>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- end of .container-->
-        
-              </section>
+             
 
               <section>
 

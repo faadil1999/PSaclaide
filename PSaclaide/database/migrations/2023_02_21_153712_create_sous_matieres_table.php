@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::disableForeignKeyConstraints();
+        // Schema::disableForeignKeyConstraints();
         Schema::create('sous_matieres', function (Blueprint $table) {
             $table->id();
             $table->string('name');

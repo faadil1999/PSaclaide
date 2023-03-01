@@ -17,4 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth','verified')->group(function(){
+    Route::get('home',function(){
+        return view('admin.home');
+    });
+});
+
 Route::get('/annonce/{id}', [AnnonceController::class, 'annonce']);
