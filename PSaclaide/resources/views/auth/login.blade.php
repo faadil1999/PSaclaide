@@ -15,7 +15,7 @@
                         <form method="POST" action="{{route('login')}}" class="signin-form">
                             @csrf
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Email" name="email" required>
+                                <input type="text" class="form-control" placeholder="Email" name="email">
                             </div>
                             @if ($errors->has('email'))
                                 <div class="error" style="color: red">
@@ -23,8 +23,7 @@
                                 </div>
                              @endif
                             <div class="form-group">
-                                <input id="password-field" type="password" class="form-control" name="password" placeholder="Password"
-                                    required>
+                                <input id="password-field" type="password" class="form-control" name="password" placeholder="Password">
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                             @if ($errors->has('password'))

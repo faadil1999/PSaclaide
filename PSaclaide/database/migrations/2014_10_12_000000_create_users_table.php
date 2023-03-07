@@ -17,23 +17,22 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('email')->unique();
-            $table->string('first_name');
-            $table->string('last_name');   
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();   
             $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('studyYear');
-            $table->string('speciality');
-            $table->boolean('isTeacher');
-            $table->integer('nbCoursesGiven');
-            $table->integer('nbCoursesReceived');
-            $table->integer('sumGrades');
-            $table->float('avgGrades');
-            $table->float('balance');
+            $table->integer('studyYear')->nullable();
+            $table->string('speciality')->nullable();
+            $table->boolean('isTeacher')->nullable();
+            $table->integer('nbCoursesGiven')->nullable();
+            $table->integer('nbCoursesReceived')->nullable();
+            $table->integer('sumGrades')->nullable();
+            $table->float('avgGrades')->nullable();
+            $table->float('balance')->nullable();
             $table->rememberToken();
             $table->timestamps();
-
-            $table->unsignedBigInteger('departement_id');
-            $table->foreign('departement_id')->references('id')->on('departements');
+            $table->foreignId('departement_id')->constrained()->onDelete('cascade');
+           // $table->foreign('departement_id')->references('id')->on('departements');
         });
     }
 
