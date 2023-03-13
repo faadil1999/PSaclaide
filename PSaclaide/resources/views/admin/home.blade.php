@@ -4,7 +4,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<title>Ready Bootstrap Dashboard</title>
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-	<link rel="stylesheet" href="{{asset("admin_assets/assets/css/bootstrap.min.css")}}">
+	<link rel="stylesheet" href="{{ asset("admin_assets/assets/css/bootstrap.min.css") }}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
 	<link rel="stylesheet" href="{{asset("admin_assets/assets/css/ready.css")}}">
 	<link rel="stylesheet" href="{{asset("admin_assets/assets/css/demo.css")}}">
@@ -39,6 +39,10 @@
 							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="la la-envelope"></i>
 							</a>
+							<div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" id="customSwitches">
+								<label class="custom-control-label" for="customSwitches">Toggle this switch element</label>
+							  </div>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="#">Action</a>
 								<a class="dropdown-item" href="#">Another action</a>
@@ -174,6 +178,15 @@
 								<span class="badge badge-count">5</span>
 							</a>
 						</li>
+						@if ( Auth::user()->ready_to_use())
+						<li class="nav-item">
+							<a href="components.html">
+								<i class="la la-table"></i>
+								<p>Verification</p>
+								<span class="badge badge-count">14</span>
+							</a>
+						</li>
+						@endif 
 						<li class="nav-item">
 							<a href="components.html">
 								<i class="la la-table"></i>
@@ -182,7 +195,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="forms.html">
+							<a href="{{route("annonce_form")}}">
 								<i class="la la-keyboard-o"></i>
 								<p>Forms</p>
 								<span class="badge badge-count">50</span>

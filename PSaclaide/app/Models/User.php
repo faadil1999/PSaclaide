@@ -43,9 +43,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function ready_to_use()
+    {
+        if($this->last_name == null){
+            return false;
+        }
+    }
+
     public function annonces()
     {
         return $this->hasMany(Annonce::class);
+    }
+
+    public function formateur()
+    {
+        return $this->hasOne(Formateur::class);
+    }
+
+    public function student()
+    {
+        return$this->hasOne(Student::class);
     }
 
     public function departement()

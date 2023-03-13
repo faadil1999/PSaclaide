@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnnonceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +23,7 @@ Route::middleware('auth','verified')->group(function(){
     Route::get('home',function(){
         return view('admin.home');
     });
+    Route::get('add_annonce',[AdminController::class , 'annonce'])->name('annonce_form');
 });
 
 Route::get('/annonce/{id}', [AnnonceController::class, 'annonce']);
