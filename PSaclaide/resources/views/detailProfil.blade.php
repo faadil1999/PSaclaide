@@ -1,6 +1,4 @@
-@extends('layouts.web')
-@section('main')
-<h1>Complete information</h1>
+@extends('layouts.app')
 
 <form method="POST" action="{{ route('completerProfil') }}">
     @csrf
@@ -46,5 +44,3 @@
         </button>
     </div>
 </form>
-
-@endsection

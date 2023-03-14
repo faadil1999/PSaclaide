@@ -22,91 +22,91 @@ class DatabaseSeeder extends Seeder
         //\App\Models\Departement::factory(5)->create();
         Departement::create([
             'name' => 'Faculté Jean Monnet',
-            'picture' => 'facJM.png',
+            'picture' => 'JeanMonnet.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté de Médecine',
-            'picture' => 'facMédecine.png',
+            'picture' => 'Medecine.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté de Pharmacie',
-            'picture' => 'facPharmacie.png',
+            'picture' => 'Pharmacie.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté des Sciences d\'Orsay',
-            'picture' => 'facSciences.png',
+            'picture' => 'SciencesOrsay.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté des Sciences du Sport',
-            'picture' => 'facJM.png',
+            'picture' => 'SciencesSport.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'IUT de Cachan',
-            'picture' => 'facMédecine.png',
+            'picture' => 'IUTCachan.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'IUT d\'Orsay',
-            'picture' => 'facPharmacie.png',
+            'picture' => 'IUTOrsay.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'IUT de Sceaux',
-            'picture' => 'facSciences.png',
+            'picture' => 'IUTSceaux.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Observatoire des Sciences de l\'Univers',
-            'picture' => 'facJM.png',
+            'picture' => 'SciencesUnivers.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Polytech Paris-Saclay',
-            'picture' => 'facMédecine.png',
+            'picture' => 'PolytechPS.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'AgroParisTech',
-            'picture' => 'facPharmacie.png',
+            'picture' => 'Agro.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'CentraleSupélec',
-            'picture' => 'facSciences.png',
+            'picture' => 'Centrale.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Ecole Normale Supérieur Paris-Saclay',
-            'picture' => 'facJM.png',
+            'picture' => 'ENS.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
-            'name' => 'Institut d\'Optique',
-            'picture' => 'facMédecine.png',
+            'name' => 'Institut d\'Optique Graduate School',
+            'picture' => 'Optique.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Institut des Hautes Etudes Scientifiques',
-            'picture' => 'facPharmacie.png',
+            'picture' => 'IHES.png',
             'number_study_years' => 5
         ]);
 

@@ -94,7 +94,7 @@
 					</ul>
 				</li>
 				<li class="nav-item dropdown">
-					<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="{{asset("admin_assets/assets/img/profile.jpg")}}" alt="user-img" width="36" class="img-circle"><span >Hizrian</span></span> </a>
+					<a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false"> <img src="{{asset("admin_assets/assets/img/profile.jpg")}}" alt="user-img" width="36" class="img-circle"><span >{{ $user->first_name }}</span></span> </a>
 					<ul class="dropdown-menu dropdown-user">
 						<li>
 							<div class="user-box">
@@ -136,7 +136,7 @@
 					</a>
 					<div class="clearfix"></div>
 
-					<div class="collapse in" id="collapseExample" aria-expanded="true" style="">
+					<div class="collapse in" id="collapseExample" aria-expanded="true">
 						<ul class="nav">
 							<li>
 								<a href="#profile">
@@ -177,16 +177,16 @@
 
 				@endif 
 				<li class="nav-item">
-					<a href="components.html">
+					<a href="/newAnnonce">
 						<i class="la la-table"></i>
-						<p>Components</p>
+						<p>Créer annonce</p>
 						<span class="badge badge-count">14</span>
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="{{route("annonce_form")}}">
+					<a href="/annonce">
 						<i class="la la-keyboard-o"></i>
-						<p>Forms</p>
+						<p>Annonce</p>
 						<span class="badge badge-count">50</span>
 					</a>
 				</li>

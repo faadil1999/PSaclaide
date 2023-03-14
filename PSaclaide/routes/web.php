@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AnnonceController;
+use App\Models\Departement;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,20 +19,27 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::middleware('auth','verified')->group(function(){
-   
+
     Route::get('complete_profil',function(){
-        return view ('admin.complete_profil');
+        $departements = Departement::All();
+        return view ('admin.complete_profil',['departements' => $departements]);
     })->name("profil_complete");
 
 });
 Route::middleware('auth','verified','completed_profil')->group(function(){
    
-
     Route::get('home',function(){
         return view('admin.home');
     })->name("home");
     Route::get('add_annonce',[AdminController::class , 'annonce'])->name('annonce_form');
 });
 
-Route::get('/annonce/{id}', [AnnonceController::class, 'annonce']);
+Route::get('/profil', [AdminController::class, 'profil'])->name('profil');
+Route::post('/home', [AdminController::class, 'updateProfil'])->name('completerProfil');
+
+Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('annonce');
+Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('createAnnonce');
+
+Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');

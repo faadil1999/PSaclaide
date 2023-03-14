@@ -8,6 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class AIndividuel extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'annonce_id'     
+    ];
+
     public function annonce()
     {
         return $this->morphOne(Annonce::class, 'annonceType');

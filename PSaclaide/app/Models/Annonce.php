@@ -9,6 +9,19 @@ class Annonce extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'matiere',
+        'author',
+        'matiere_id',
+        'user_id'     
+    ];
+
+    protected $attributes = [
+        'isAvailable' => true
+    ];
+
     public function matiere()
     {
         return $this->belongsTo(Matiere::class);

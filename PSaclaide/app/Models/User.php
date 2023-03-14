@@ -18,10 +18,29 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'first_name',
         'email',
         'password',
+        'first_name',
+        'last_name',
+        'studyYear',
+        'speciality',
+        'isTeacher',
         'departement_id'
+    ];
+
+    protected $attributes = [
+        'first_name' => null,
+        'last_name'  => null,  
+        'email_verified_at' => null,
+        'studyYear'  => null,
+        'speciality' => null,
+        'isTeacher'  => false,
+        'nbCoursesGiven'    => 0,
+        'nbCoursesReceived' => 0,
+        'sumGrades' => 0,
+        'avgGrades' => 0,
+        'balance'   => 0,
+        'departement_id' => null
     ];
 
     /**
@@ -46,6 +65,7 @@ class User extends Authenticatable
     public function ready_to_use()
     {
         if($this->last_name == null){
+            dd($this);
             return false;
         }
     }

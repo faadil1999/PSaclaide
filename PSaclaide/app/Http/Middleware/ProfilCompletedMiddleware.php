@@ -21,6 +21,7 @@ class ProfilCompletedMiddleware
 
         if(! Auth::user()->ready_to_use() ){
            
+            dd(Auth::user()->ready_to_use());
             return redirect()->route('profil_complete');
 
         }else{

@@ -31,7 +31,7 @@ return new class extends Migration
             $table->float('balance')->nullable();
             $table->rememberToken();
             $table->timestamps();
-            $table->foreignId('departement_id')->constrained()->onDelete('cascade');
+            $table->foreignId('departement_id')->nullable()->constrained()->onDelete('cascade');
            // $table->foreign('departement_id')->references('id')->on('departements');
         });
     }

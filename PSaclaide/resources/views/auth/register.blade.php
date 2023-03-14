@@ -19,9 +19,6 @@
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Email" name="email">
                                         </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name" name="name">
-                                        </div>
                                     @if ($errors->has('email'))
                                         <div class="error" style="color: red">
                                             {{ $errors->first('email') }}
