@@ -70,9 +70,7 @@ class AdminController extends Controller
     {
         $matieres = Matiere::All();
 
-        $user = auth()->user();
-
-        return view('creationAnnonce',['user' => $user, 'matieres' => $matieres]);
+        return view('creationAnnonce',['user' => auth()->user(), 'matieres' => $matieres]);
     }
 
     public function createAnnonce(Request $request){

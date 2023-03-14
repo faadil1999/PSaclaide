@@ -33,13 +33,15 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::get('home',function(){
         return view('admin.home');
     })->name("home");
-    Route::get('add_annonce',[AdminController::class , 'annonce'])->name('annonce_form');
+    
+    Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('annonce');
+    Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('createAnnonce'); 
+
 });
 
 Route::get('/profil', [AdminController::class, 'profil'])->name('profil');
 Route::post('/home', [AdminController::class, 'updateProfil'])->name('completerProfil');
 
-Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('annonce');
-Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('createAnnonce');
+
 
 Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');
