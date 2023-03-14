@@ -17,11 +17,10 @@ class ProfilCompletedMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        
 
-
-        if(! Auth::user()->ready_to_use() ){
+        if(auth()->user()->ready_to_use() ){
            
-            dd(Auth::user()->ready_to_use());
             return redirect()->route('profil_complete');
 
         }else{

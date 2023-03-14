@@ -64,10 +64,7 @@ class User extends Authenticatable
 
     public function ready_to_use()
     {
-        if($this->last_name == null){
-            dd($this);
-            return false;
-        }
+      return $this->last_name==null;
     }
 
     public function annonces()
