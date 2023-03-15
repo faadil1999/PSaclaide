@@ -3,10 +3,10 @@
 
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header mt-5">
         <div class="card-title">Ajouter une annonce</div>
     </div>
-    <form method="POST" action="{{ route('createAnnonce') }}">
+    <form method="POST" action="{{ route('storeAnnonce') }}">
         @csrf
     <div class="card-body">
         <div class="form-check">
@@ -59,7 +59,7 @@
                
                     <select class="form-control" name="matiere">
                         @foreach ($matieres as $matiere)
-                            <option value="{{ $matiere->name }}">{{ $matiere->name }}</option>
+                            <option value="{{ $matiere->id }}">{{ $matiere->name }}</option>
                         @endforeach
                         </select>
                

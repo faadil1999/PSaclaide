@@ -63,23 +63,25 @@ class AdminController extends Controller
 
         $user = auth()->user();
 
-        return view('annonce',['user' => $user]);
+        return view('admin.annonce',['annonces' => $user->annonces ]);
     }
 
     public function annonce()
     {
         $matieres = Matiere::All();
 
-        return view('creationAnnonce',['user' => auth()->user(), 'matieres' => $matieres]);
+        return view('admin.creationAnnonce',['user' => auth()->user(), 'matieres' => $matieres]);
     }
 
     public function createAnnonce(Request $request){
         $user = auth()->user();
+        // (Matiere::where('name', $request->matiere)->get()->first())->id,
+      
         $annonce = Annonce::create([
             'title'       => $request->input('title'),
             'description' => $request->input('description'),
             'author'      => $user->email,
-            'matiere_id'  => (Matiere::where('name', $request->matiere)->get()->first())->id,
+            'matiere_id'  => $request->matiere, 
             'user_id'     => $user->id
         ]);
 

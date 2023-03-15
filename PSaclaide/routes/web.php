@@ -4,6 +4,7 @@ use App\Models\Departement;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnnonceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,8 +35,11 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
         return view('admin.home');
     })->name("home");
     
-    Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('annonce');
-    Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('createAnnonce'); 
+    Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');
+    Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('form_annonce');
+   
+    Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('storeAnnonce'); 
+    Route::get('annonce/{id}',[AnnonceController::class, 'details'])->name("details_annonce");
 
 });
 
@@ -44,4 +48,3 @@ Route::post('/home', [AdminController::class, 'updateProfil'])->name('completerP
 
 
 
-Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');

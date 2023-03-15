@@ -169,7 +169,7 @@
                     </div>
                     <ul class="nav">
                         <li class="nav-item active">
-                            <a href="index.html">
+                            <a href="{{ route("home")}}">
                                 <i class="la la-dashboard"></i>
                                 <p>Dashboard</p>
                                 <span class="badge badge-count">5</span>
@@ -187,7 +187,7 @@
         
                         @endif 
                         <li class="nav-item">
-                            <a href="/newAnnonce">
+                            <a href="{{route("form_annonce")}}">
                                 <i class="la la-table"></i>
                                 <p>Créer annonce</p>
                                 <span class="badge badge-count">14</span>
@@ -227,12 +227,7 @@
                                 <p>Icons</p>
                             </a>
                         </li>
-                        <li class="nav-item update-pro">
-                            <button  data-toggle="modal" data-target="#modalUpdate">
-                                <i class="la la-hand-pointer-o"></i>
-                                <p>Update To Pro</p>
-                            </button>
-                        </li>
+                      
                     </ul>
                 </div>
             </div>
