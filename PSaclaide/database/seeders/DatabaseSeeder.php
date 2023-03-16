@@ -22,100 +22,101 @@ class DatabaseSeeder extends Seeder
         //\App\Models\Departement::factory(5)->create();
         Departement::create([
             'name' => 'Faculté Jean Monnet',
-            'picture' => 'JeanMonnet.png',
+            'picture' => 'facJM.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté de Médecine',
-            'picture' => 'Medecine.png',
+            'picture' => 'facMédecine.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté de Pharmacie',
-            'picture' => 'Pharmacie.png',
+            'picture' => 'facPharmacie.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté des Sciences d\'Orsay',
-            'picture' => 'SciencesOrsay.png',
+            'picture' => 'facSciences.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Faculté des Sciences du Sport',
-            'picture' => 'SciencesSport.png',
+            'picture' => 'facJM.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'IUT de Cachan',
-            'picture' => 'IUTCachan.png',
+            'picture' => 'facMédecine.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'IUT d\'Orsay',
-            'picture' => 'IUTOrsay.png',
+            'picture' => 'facPharmacie.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'IUT de Sceaux',
-            'picture' => 'IUTSceaux.png',
+            'picture' => 'facSciences.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Observatoire des Sciences de l\'Univers',
-            'picture' => 'SciencesUnivers.png',
+            'picture' => 'facJM.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Polytech Paris-Saclay',
-            'picture' => 'PolytechPS.png',
+            'picture' => 'facMédecine.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'AgroParisTech',
-            'picture' => 'Agro.png',
+            'picture' => 'facPharmacie.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'CentraleSupélec',
-            'picture' => 'Centrale.png',
+            'picture' => 'facSciences.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Ecole Normale Supérieur Paris-Saclay',
-            'picture' => 'ENS.png',
+            'picture' => 'facJM.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
-            'name' => 'Institut d\'Optique Graduate School',
-            'picture' => 'Optique.png',
+            'name' => 'Institut d\'Optique',
+            'picture' => 'facMédecine.png',
             'number_study_years' => 5
         ]);
 
         Departement::create([
             'name' => 'Institut des Hautes Etudes Scientifiques',
-            'picture' => 'IHES.png',
+            'picture' => 'facPharmacie.png',
             'number_study_years' => 5
         ]);
 
 
         \App\Models\User::factory(10)->create();
         \App\Models\Matiere::factory(5)->create();
-        $annonces = \App\Models\Annonce::factory(10)->create();
         \App\Models\SousMatiere::factory(15)->create();
 
+
+        /*$annonces = \App\Models\Annonce::factory(10)->create();
         // créer des données pour la classe Oeuf
         for ($i = 0; $i < 5; $i++) {
             $aCollectif = ACollectif::create([
@@ -131,7 +132,7 @@ class DatabaseSeeder extends Seeder
             $aIndividuel = AIndividuel::create([
                 'annonce_id' => $annonces->random()->id
             ]);
-        }
+        }*/
 
             
     }

@@ -4,8 +4,9 @@
     <div class="content">
         <div class="container-fluid">
            
+            <h4> Voici l'annonce {{$annonce->id}} : </h4>
             <div>
-                {{$annonce->description }}
+                <span>{{$annonce->title }} : {{$annonce->description}}</span>
             </div>
         </div>
     </div>

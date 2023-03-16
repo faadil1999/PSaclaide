@@ -34,7 +34,7 @@
     </div>
 
     <div>
-        <label class="switch">
+        <label class="switch"> Cochez la case si vous voulez être professeur
         <input type="checkbox" name="prof">
         <span class="slider round"></span>
         </label>

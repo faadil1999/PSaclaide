@@ -75,26 +75,46 @@ class AdminController extends Controller
 
     public function createAnnonce(Request $request){
         $user = auth()->user();
-        // (Matiere::where('name', $request->matiere)->get()->first())->id,
-      
-        $annonce = Annonce::create([
-            'title'       => $request->input('title'),
-            'description' => $request->input('description'),
-            'author'      => $user->email,
-            'matiere_id'  => $request->matiere, 
-            'user_id'     => $user->id
-        ]);
 
-        if($request->mode == "modeInd"){
-            AIndividuel::create([
-                'annonce_id' => $annonce->id
+        // Erreur car déjà pris à cet horaire
+        // (Matiere::where('name', $request->matiere)->get()->first())->id,
+        /*$testAnnonce = Annonce::where([
+            ['user_id', '=', $user->id],
+            ['age', '>', 30]])
+            ->get()->first();
+
+        if($testAnnonce != null){*/
+            //return redirect()->back()->withErrors(['error' => 'Il y a une erreur dans le formulaire.']);
+        //}
+        //else{
+
+
+            $annonce = Annonce::create([
+                'title'       => $request->input('title'),
+                'description' => $request->input('description'),
+                'author'      => $user->email,
+                'matiere_id'  => $request->matiere, 
+                'user_id'     => $user->id
             ]);
-        }
-        else{
-            ACollectif::create([
-                'annonce_id' => $annonce->id
-            ]);
-        }
+    
+            if($request->mode == "modeInd"){
+                AIndividuel::create([
+                    'annonce_id' => $annonce->id
+                ]);
+                $annonce->update([
+                    'isIndividual' => true
+                ]);
+            }
+            else{
+                ACollectif::create([
+                    'annonce_id' => $annonce->id
+                ]);
+                $annonce->update([
+                    'isIndividual' => false
+                ]);
+            }
+        //}
+        
         return view('admin.home',['user' => $user]);
     }
 

@@ -14,12 +14,14 @@ class Annonce extends Model
         'description',
         'matiere',
         'author',
+        'isIndividual',
         'matiere_id',
         'user_id'     
     ];
 
     protected $attributes = [
-        'isAvailable' => true
+        'isAvailable' => true,
+        'isIndividual' => true
     ];
 
     public function matiere()

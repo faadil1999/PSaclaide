@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('description');
             $table->string('author');
             $table->boolean('isAvailable');
+            $table->boolean('isIndividual');
             $table->timestamp('horaire');
 
             $table->unsignedBigInteger('matiere_id');

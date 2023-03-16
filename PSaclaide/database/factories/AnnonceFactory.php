@@ -22,6 +22,7 @@ class AnnonceFactory extends Factory
             'description' => fake()->word,
             'author'      => fake()->word,
             'isAvailable' => fake()->boolean,
+            'isIndividual'=> fake()->boolean,
             'horaire'     => fake()->datetime,
             'matiere_id'  => fake()->numberBetween(1,5),
             'user_id'     => fake()->numberBetween(1,10)   

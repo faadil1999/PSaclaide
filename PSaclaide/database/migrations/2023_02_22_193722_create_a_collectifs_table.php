@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('current_number_people');
             $table->string('location');
 
-            $table->unsignedBigInteger('annonce_id');
+            $table->unsignedBigInteger('annonce_id')->unique();
             $table->foreign('annonce_id')->references('id')->on('annonces');
 
             $table->timestamps();
