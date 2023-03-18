@@ -18,14 +18,12 @@ return new class extends Migration
             $table->integer('maximum_number_people');
             $table->integer('current_number_people');
             $table->string('location');
-
-            $table->unsignedBigInteger('annonce_id')->unique();
-            $table->foreign('annonce_id')->references('id')->on('annonces');
-
+            $table->foreignId('annonce_id')->constrained()->onDelete('cascade');
+            $table->foreignId('formateur_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

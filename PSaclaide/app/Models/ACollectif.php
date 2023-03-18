@@ -9,6 +9,7 @@ class ACollectif extends Model
 {
     use HasFactory;
 
+        
     protected $fillable = [
         'annonce_id'     
     ];
@@ -28,4 +29,11 @@ class ACollectif extends Model
     {
         return $this->belongsTo(Annonce::class, 'annonceType_id')->where('annonceType_type', ACollectif::class);
     }
+
+    public function formateur()
+    {
+        return $this->belongsTo(Formateur::class );
+    }
+
 }
+

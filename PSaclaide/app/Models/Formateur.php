@@ -17,4 +17,15 @@ class Formateur extends Model
     {
         return $this->belongsTo(User::class);
     }
+    
+    public function Aindividuel()
+    {
+        return $this->hasMany( AIndividuel::class );
+    }
+
+    public function ACollectif()
+    {
+        return $this->hasMany( ACollectif::class );
+    }
+
 }

@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Unique;
 
 return new class extends Migration
 {
@@ -16,10 +15,8 @@ return new class extends Migration
     {
         Schema::create('a_individuels', function (Blueprint $table) {
             $table->id();
-
-            $table->unsignedBigInteger('annonce_id')->unique();
-            $table->foreign('annonce_id')->references('id')->on('annonces');
-
+            $table->foreignId('annonce_id')->constrained()->onDelete('cascade');
+            $table->foreignId('formateur_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

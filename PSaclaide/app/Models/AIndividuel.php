@@ -12,14 +12,21 @@ class AIndividuel extends Model
     protected $fillable = [
         'annonce_id'     
     ];
-
+    
     public function annonce()
     {
         return $this->morphOne(Annonce::class, 'annonceType');
     }
-
+    
     public function annonceUnique()
     {
         return $this->belongsTo(Annonce::class, 'annonceType_id')->where('annonceType_type', AIndividuel::class);
     }
+    
+    public function formateur()
+    {
+        return $this->belongsTo(Formateur::class);
+    }
+    
+
 }
