@@ -41,6 +41,8 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('storeAnnonce'); 
     Route::get('annonce/{id}',[AnnonceController::class, 'details'])->name("details_annonce");
 
+  
+
 });
 
 Route::get('/profil', [AdminController::class, 'profil'])->name('profil');

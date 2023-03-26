@@ -15,7 +15,7 @@
 	<body class="img js-fullheight" style="background-image: url(auth_assets/images/psac.jpg);">
 	@yield("main")
 
-	<script src="js/jquery.min.js"></script>
+	<script src="{{asset("auth_assets/js/jquery.min.js")}}"></script>
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>

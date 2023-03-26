@@ -1,0 +1,122 @@
+<script setup>
+import { onMounted, ref } from 'vue'
+const props = defineProps(['user_auth'])
+const is_collectif = ref( false )
+const matieres = ref( null )
+const title = ref( "" )
+const nbr_participant = ref( null )
+const matiere_id = ref( null )
+const description = ref( null )
+const date = ref( null )
+const horaire = ref( null )
+
+// new Date().toJSON().slice(0,10).replace(/-/g,'/');
+
+//get all subjects from database
+const getMatieres = async () => {
+    let response =  await axios.get("http://127.0.0.1:8000/api/matieres");
+    matieres.value = response.data.matieres
+}
+
+
+//add annonce on database
+const addAnnonce = async ()=>{
+    await  axios.post('/api/store/annonce',{
+        
+        title: title.value,
+        description: description.value,
+        email: props.user_auth.email,
+        matiere: 2,
+        isIndividual:!is_collectif.value,
+        id: props.user_auth.id
+
+     }).then(function (response){
+        console.log("SUCCESS");
+
+        window.location.href = "http://127.0.0.1:8000/home"
+   }).catch(function (error) {
+
+    console.log(error);
+
+});
+   
+
+}
+
+// after the onMounted function, we get all subjects in result to display it on screen
+onMounted(() =>
+{
+    getMatieres()
+})
+
+</script>
+
+<template>
+    <div>
+        <form @submit.prevent="addAnnonce()">
+        
+            <div class="card-body">  
+                <h1>Bien test</h1>
+                <div class="form-check">
+                    <label>Type d'annonce</label><br/>
+                   
+                    <!-- <p v-for="matiere in matieres" :key="matiere.id" >{{ matiere }}</p> -->
+                    <label class="form-radio-label">
+                        <input class="form-radio-input" type="radio" v-model="is_collectif"  name="optionsRadios" :value="false">
+                        <span class="form-radio-sign">Individuel</span>
+                    </label>
+                    <label class="form-radio-label ml-3">
+                        <input class="form-radio-input" type="radio" v-model="is_collectif"  name="optionsRadios" :value="true">
+                        <span class="form-radio-sign">Collectif</span>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="email">Titre</label>
+                    <input type="text" class="form-control" v-model="title" name="title"   placeholder="Entrer le titre">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+               
+                <div v-if="is_collectif" class="form-group">
+                    <label for="email">Nombre max participant</label>
+                    <input type="number" class="form-control"  name="nbr_personne"   placeholder="Nombre de participant">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div v-else  class="form-group">
+                    <small id="emailHelp" class="form-text text-muted">Une annonce individuel se passe avec une seule personne</small>
+                </div>
+
+             
+                
+                <div class="form-group">
+                     <label for="exampleFormControlSelect1">Matières</label>
+                    
+                       <select class="form-control" name="matiere">
+                                 
+                          <option  v-for="matiere in matieres" :key="matiere.id" value="{{ matiere->id }}">{{ matiere['name'] }}</option>
+                        
+                      </select>
+                    
+                </div>
+                <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="date" v-model="date" id="date" name="date">
+                
+                        <label for="time">Horaire:</label>
+                        <input type="time" v-model="horaire" id="time" name="time">
+                </div>
+       
+                <div class="form-group">
+                    <label for="comment">Description</label>
+                    <textarea class="form-control" id="desc" type="textarea" v-model="description" name="description" rows="5">
+
+                    </textarea>
+                </div> 
+             
+                <div class="card-action">
+                    <button class="btn btn-success" type="submit" >Submit</button>
+                    <button class="btn btn-danger">Cancel</button>
+                </div> 
+            </div>
+        </form>
+    </div>
+</template>

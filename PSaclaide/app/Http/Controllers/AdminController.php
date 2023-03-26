@@ -10,20 +10,29 @@ use App\Models\ACollectif;
 use App\Models\AIndividuel;
 use App\Models\Departement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     //
 
+
     public function store_annonce(Request $request)
     {
-
+    
         ///
-        $request->validate([
-
+        $annonce = Annonce::create([
+            'title'       => $request->input('title'),
+            'description' => $request->input('description'),
+            'author'      => $request->email,
+            'isIndividual'=> $request->isIndividual,
+            'matiere_id'  => $request->matiere, 
+            'user_id'     => $request->id
         ]);
 
     }
+
+
 
     public function profil()
     {
@@ -62,7 +71,7 @@ class AdminController extends Controller
     {
 
         $user = auth()->user();
-
+       
         return view('admin.annonce',['annonces' => $user->annonces ]);
     }
 
@@ -88,6 +97,13 @@ class AdminController extends Controller
         //}
         //else{
 
+            // $request->validate([
+            //     'title' => 'required|string|max:255',
+            //     'description' => 'required|string|max:500',
+            //     'author'      => 'required',
+            //     'matiere_id'  => 'required', 
+            //     'user_id'     
+            // ]);
 
             $annonce = Annonce::create([
                 'title'       => $request->input('title'),

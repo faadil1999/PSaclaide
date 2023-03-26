@@ -11,7 +11,9 @@ class ACollectif extends Model
 
         
     protected $fillable = [
-        'annonce_id'     
+        'annonce_id',
+        'maximum_number_people',
+        'location'     
     ];
 
     protected $attributes = [
