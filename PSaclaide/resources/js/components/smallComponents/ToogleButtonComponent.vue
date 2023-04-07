@@ -1,6 +1,8 @@
 <script setup>
 import { ref,inject, onMounted , onBeforeMount } from "vue";
 
+console.log("sdsdsad");
+
 const isFormateur = ref( false );
 
 const emitter = inject('emitter');
@@ -31,12 +33,12 @@ const toggle = (e) => {
         <button
             @click="toggle(true)"
             :class="[isFormateur ? 'btn btn-warning' : 'btn btn-default']"
-        >Formateur</button>
+        >Formateur </button>
         
         <button
             class="student"
             @click="toggle(false)"
             :class="[isFormateur ? 'btn btn-default' : 'btn btn-success']"
-        >Etudiant</button>
+        >Etudiant </button>
     </div>
 </template>

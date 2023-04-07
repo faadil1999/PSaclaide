@@ -5,6 +5,7 @@ const emitter = inject('emitter')
 const isFormateur = ref (null)
 const styleDiv = ref ('etudiantclass') 
 
+
 onMounted(() => {
     emitter.on('changeState', (value) => {   // *Listen* for event
     //   console.log('show element', `value: ${value}`);
@@ -34,6 +35,7 @@ onUpdated(()=>{
 <template>
     <div :class ="styleDiv" >
         <h1 style="color:black" v-if="isFormateur" >Test</h1>
+     
         <slot ></slot>
     </div>
 </template>

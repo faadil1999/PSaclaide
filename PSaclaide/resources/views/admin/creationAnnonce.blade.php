@@ -9,7 +9,8 @@
         <div class="card-title">Ajouter une annonce</div>
        
     </div>
-    <add-annonce :user_auth="{{Auth::user()}}"> </add-annonce>
+    <add-annonce :user_auth="{{Auth::user()}}"> </add-annonce> 
+    {{-- <ajout-annonce></ajout-annonce> --}}
     {{-- <form method="POST" action="{{ route('storeAnnonce') }}">
         @csrf
     <div class="card-body"> --}}
