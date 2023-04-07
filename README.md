@@ -32,3 +32,8 @@
 
 - Enlever les données des tables : *php artisan migrate:fresh*
 - Enlever les données des tables + Ajout nouvelles données : *php artisan migrate:fresh --seed*
+
+## Images
+
+![login](https://user-images.g![annonce](https://user-images.githubusercontent.com/93045942/230586895-c4a799fe-7537-4e6b-89ad-f047a0be39cc.png)
+ithubusercontent.com/93045942/230586873-4d3e6484-f2f1-4dfc-9f1b-f9b6774af8c7.png)
