@@ -21,15 +21,41 @@ class AdminController extends Controller
     {
     
         ///
-        $annonce = Annonce::create([
-            'title'       => $request->input('title'),
-            'description' => $request->input('description'),
-            'author'      => $request->email,
-            'isIndividual'=> $request->isIndividual,
-            'matiere_id'  => $request->matiere, 
-            'user_id'     => $request->id
-        ]);
+        // $annonce = Annonce::create([
+        //     'title'       => $request->input('title'),
+        //     'description' => $request->input('description'),
+        //     'author'      => $request->email,
+        //     'isIndividual'=> $request->isIndividual,
+        //     'matiere_id'  => $request->matiere, 
+        //     'user_id'     => $request->id
+        // ]);
+        if($request->input('participant_max') != null ){
+            $acollecct = ACollectif::create([
+                        'annonce_id' => 2,
+                        'maximum_number_people' => $request->input('participant_max'),
+                        'location' => $request->input('location'),
+                        'formateur_id'=> 1
+                ]);
+        }
+        else{
+            dd("Autre");
+        }
+        // if($request->input('participant_max') != 0 )
+        // {
+        //     ACollectif::create([
+        //         'annonce_id' => $annonce->id,
+        //         'maximum_number_people' => $request->input('participant_max'),
+        //         'location' => $request->input('location')  
+        //     ]);
 
+        // }else
+        // {
+        //     AIndividuel::create([
+        //         'annonce_id' => $annonce->id,
+        //         'formateur_id'=> $request->id
+        //     ]);
+
+        // }
     }
 
 

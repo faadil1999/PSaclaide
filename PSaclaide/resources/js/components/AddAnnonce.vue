@@ -3,9 +3,10 @@ import { onMounted, ref } from 'vue'
 const props = defineProps(['user_auth'])
 const is_collectif = ref( false )
 const matieres = ref( null )
+const location = ref( null )
 const title = ref( "" )
 const nbr_participant = ref( null )
-const matiere_id = ref( null )
+var matiere_id = 1
 const description = ref( null )
 const date = ref( null )
 const horaire = ref( null )
@@ -18,6 +19,12 @@ const getMatieres = async () => {
     matieres.value = response.data.matieres
 }
 
+const onChange = (e) =>
+{
+    var id = e.target.value;
+    matiere_id = e.target.value;
+    console.log("id",matiere_id);
+}
 
 //add annonce on database
 const addAnnonce = async ()=>{
@@ -26,10 +33,11 @@ const addAnnonce = async ()=>{
         title: title.value,
         description: description.value,
         email: props.user_auth.email,
-        matiere: 2,
+        matiere: matiere_id,
         isIndividual:!is_collectif.value,
-        id: props.user_auth.id
-
+        id: props.user_auth.id,
+        location:location.value,
+        participant_max: nbr_participant.value
      }).then(function (response){
         console.log("SUCCESS");
 
@@ -78,25 +86,30 @@ onMounted(() =>
                
                 <div v-if="is_collectif" class="form-group">
                     <label for="email">Nombre max participant</label>
-                    <input type="number" class="form-control"  name="nbr_personne"   placeholder="Nombre de participant">
+                    <input type="number" class="form-control"  name="participant_max" v-model="nbr_participant"  placeholder="Nombre de participant">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div v-else  class="form-group">
                     <small id="emailHelp" class="form-text text-muted">Une annonce individuel se passe avec une seule personne</small>
                 </div>
-
-             
+                <div v-if="is_collectif" class="form-group">
+                    <label for="email">Location</label>
+                    <input type="text" class="form-control"  name="location" v-model="location"  placeholder="Lieu de deroulement">
+                    <small id="emailHelp" class="form-text text-muted">Ex: Bat620 B120 ,Bat 640 E13.. </small>
+                </div>
                 
                 <div class="form-group">
                      <label for="exampleFormControlSelect1">Matières</label>
                     
-                       <select class="form-control" name="matiere">
+                       <select class="form-control" name="matiere" v-on:change="onChange($event)">
                                  
-                          <option  v-for="matiere in matieres" :key="matiere.id" value="{{ matiere->id }}">{{ matiere['name'] }}</option>
+                          <option  v-for="matiere in matieres" :key="matiere.id" :value="matiere.id">{{ matiere['name'] }}</option>
                         
                       </select>
-                    
+                      
                 </div>
+                <p>{{ matiere_id }}</p>
+                
                 <div class="form-group">
                         <label for="date">Date:</label>
                         <input type="date" v-model="date" id="date" name="date">

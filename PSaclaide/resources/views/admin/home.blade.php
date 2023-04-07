@@ -4,6 +4,11 @@
 
 		<div class="content">
 			<div class="container-fluid">
+				@if(session()->has('message'))
+				<div class="alert alert-success" role="alert">
+					{{ session()->get('message') }}
+				  </div>
+				@endif  
 				<h4 class="page-title">Dashboard</h4>
 				<div class="row">
 					<div class="col-md-3">

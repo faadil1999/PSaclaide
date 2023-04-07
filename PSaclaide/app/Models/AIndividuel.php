@@ -10,7 +10,8 @@ class AIndividuel extends Model
     use HasFactory;
 
     protected $fillable = [
-        'annonce_id'     
+        'annonce_id',
+        'formateur_id'     
     ];
     
     public function annonce()
