@@ -27,7 +27,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'studyYear',
         'speciality',
         'isTeacher',
-        'departement_id'
+        'departement_id',
+        'currentState'
     ];
 
     protected $attributes = [

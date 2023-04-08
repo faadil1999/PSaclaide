@@ -155,7 +155,7 @@
         </div>
         
         <div class="sidebar">
-            <toggle-display>
+            <toggle-display :user_auth="{{Auth::user()}}">
                 <div class="scrollbar-inner sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
@@ -256,7 +256,7 @@
                             </li>
                         </show-element>
                         <li class="nav-item">
-                            <toggle-button></toggle-button>
+                            <toggle-button :user_auth="{{Auth::user()}}"></toggle-button>
                         </li>
                        
                     </ul>

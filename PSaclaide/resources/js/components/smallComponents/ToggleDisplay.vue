@@ -1,32 +1,45 @@
 <script setup>
-import {ref, inject , onMounted , onUpdated } from 'vue'
+import {ref, inject , onMounted , onUpdated , onBeforeMount } from 'vue'
 
+const props = defineProps(['user_auth'])
 const emitter = inject('emitter')
 const isFormateur = ref (null)
 const styleDiv = ref ('etudiantclass') 
 
+const getState = async () => {
+    
+    let response =  await axios.get(`http://127.0.0.1:8000/api/toggleState/${props.user_auth.id}`)
+    isFormateur.value = response.data.state;
+}
+
+
+onBeforeMount( async()=>{
+
+    getState();
+
+})
+
 
 onMounted(() => {
-    emitter.on('changeState', (value) => {   // *Listen* for event
-    //   console.log('show element', `value: ${value}`);
-    isFormateur.value = value;
-    });
-    console.log("Fadtoooggle");
+
+
+    console.log(`Fadtoooggle:  ${isFormateur.value}`);
 })
 
 onUpdated(()=>{
+
         emitter.on('changeState', (value) => {   // *Listen* for event
-       console.log('toggle display', `value: ${value}`);
+            console.log(`toggle update ${value}`);
       isFormateur.value = value;
     });
 
-    if(isFormateur.value == true ){
+    if(isFormateur.value){
         styleDiv.value = "formateurclass";
     }else{
         styleDiv.value = "etudiantclass";
     }
 
-    console.log(styleDiv.value)
+    console.log(`${isFormateur.value} ${styleDiv.value}`)
 
     })
 
@@ -35,7 +48,6 @@ onUpdated(()=>{
 <template>
     <div :class ="styleDiv" >
         <h1 style="color:black" v-if="isFormateur" >Test</h1>
-     
         <slot ></slot>
     </div>
 </template>

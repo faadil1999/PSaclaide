@@ -13,7 +13,7 @@ import router from './router/index.js'
 import NavBar from './components/Navbr.vue'
 import Footer from './components/Footer.vue'
 import AddAnnonce from './components/AddAnnonce.vue'
-import AjoutAnnonce from './components/AjoutAnnonce.vue'
+
 
 import ToggleButton from './components/smallComponents/ToogleButtonComponent.vue'
 import ToggleDisplay from './components/smallComponents/ToggleDisplay.vue'

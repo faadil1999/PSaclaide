@@ -17,6 +17,30 @@ class AdminController extends Controller
     //
 
 
+    public function toggleStateIndex($id)
+    {
+
+        $user = User::find($id);
+
+        return response()->json([
+            'state'=>$user->currentState
+        ], 200
+    );
+        
+    }
+
+    public function toggleState($id,Request $request)
+    {
+        
+        $user = User::find($id);
+        
+        $user->update([
+
+            'currentState' => $request->state
+        ]);
+        return response( 'User state changed');
+    }
+
     public function store_annonce(Request $request)
     {
     

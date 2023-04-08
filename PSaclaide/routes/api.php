@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('matieres',APIMatieres::class );
 Route::post('/store/annonce/',[AdminController::class, 'store_annonce']);
+Route::put('/toggleState/{id}',[AdminController::class , 'toggleState']);
+Route::get('/toggleState/{id}',[AdminController::class , 'toggleStateIndex']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
