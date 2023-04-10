@@ -19,7 +19,7 @@ class Annonce extends Model
         'matiere_id',
         'date',
         'heure',
-        'user_id'     
+        'fomateur_id'     
     ];
 
     protected $attributes = [

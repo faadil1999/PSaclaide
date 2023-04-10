@@ -25,7 +25,7 @@ class AnnonceFactory extends Factory
             'isIndividual'=> fake()->boolean,
             'horaire'     => fake()->datetime,
             'matiere_id'  => fake()->numberBetween(1,5),
-            'user_id'     => fake()->numberBetween(1,10)   
+            'formateur_id'=> fake()->numberBetween(1,10)   
         ];
     }
 }

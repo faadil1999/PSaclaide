@@ -18,7 +18,7 @@ use App\Http\Controllers\AnnonceController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware('auth','verified')->group(function(){
@@ -29,6 +29,7 @@ Route::middleware('auth','verified')->group(function(){
     })->name("profil_complete");
 
 });
+
 Route::middleware('auth','verified','completed_profil')->group(function(){
    
     Route::get('home',function(){
@@ -45,8 +46,9 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
 
 });
 
-Route::get('/profil', [AdminController::class, 'profil'])->name('profil');
-Route::post('/home', [AdminController::class, 'updateProfil'])->name('completerProfil');
-
-
+Route::get('/profil',    [AdminController::class, 'profil'])->name('profil');
+Route::post('/home',     [AdminController::class, 'updateProfil'])->name('completerProfil');
+Route::get('/option',    [AdminController::class, 'option'])->name('option');
+Route::post('/option',   [AdminController::class, 'updatePassword'])->name('modifierPassword');
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 

@@ -4,19 +4,16 @@
 <head>
     <meta charset="utf-8" />
     <title>Page principale</title>
-    <link rel="stylesheet" href="{{asset("auth_assets/css/annonce.css")}}">
+    <link rel="stylesheet" href="annonce.css">
 </head>
 
 <body>
     <header>
         <button id="logout">
-            <a class="dropdown-item" href="auth-normal-sign-in.html" onclick="event.preventDefault(); document.getElementById('form_logout').submit()"><i class="fas fa-sign-out-alt"></i> Déconnexion </a>
-            <form action="{{ route('logout') }}" method="POST" id="form_logout">
-                @csrf
-            </form>
+            <i class="fas fa-sign-out-alt"></i> Déconnexion
         </button>
         <div class="profile-container">
-            <!--<img src="test.jpg" alt="Photo de profil" class="profile-picture" />-->
+            <img src="test.jpg" alt="Photo de profil" class="profile-picture" />
             <div class="dropdown-menu">
                 <a href="#">Options</a>
                 <a href="#">Mes Cours</a>
@@ -68,15 +65,7 @@
         <div class="results-container">
             <h3>Résultats de la recherche</h3>
             <div class="result-card">
-                <img src="/assets/img/departement/Centrale.png" alt="Photo du professeur" class="teacher-picture" />
-            </div>
-            <div class="info-container">
-                <h4>Nom du professeur</h4>
-                <p>Matière enseignée</p>
-                <p>École</p>
-            </div>
-            <div class="result-card">
-                <img src="/assets/img/departement/ENS.png" alt="Photo du professeur" class="teacher-picture" />
+                <img src="test2.jpg" alt="Photo du professeur" class="teacher-picture" />
             </div>
             <div class="info-container">
                 <h4>Nom du professeur</h4>
@@ -86,7 +75,7 @@
             <!-- Ajoutez plus de résultats ici -->
         </div>
     </div>
-    <script src="{{asset("auth_assets/js/script.js")}}" charset="utf-8"></script>
+    <script src="script.js" charset="utf-8"></script>
 </body>
 
 </html>

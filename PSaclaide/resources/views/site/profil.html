@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Formulaire d'inscription</title>
-    <link rel="stylesheet" href="{{asset("auth_assets/css/profil.css")}}">
+    <link rel="stylesheet" href="profil.css">
 </head>
 
 <body>
@@ -12,8 +12,8 @@
         <h2>Complétez votre profil afin de finaliser votre inscription</h2>
         <form method="POST" action="{{route('completerProfil')}}">
         @csrf
-            <input type="text" placeholder="Nom" name="prenom" required />
-            <input type="text" placeholder="Prénom" name="nomFamille" required />
+            <input type="text" placeholder="Nom" required />
+            <input type="text" placeholder="Prénom" required />
             <div>
                 <label for="departement">Departement</label>
                 <select name="departement">
@@ -33,7 +33,7 @@
             </div>
             <label class="checkbox-container">
                 Je souhaite également être professeur
-                <input type="checkbox" name="prof"/>
+                <input type="checkbox" />
                 <span class="checkmark"></span>
             </label>
             <button type="submit">Finaliser mon inscription</button>

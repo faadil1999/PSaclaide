@@ -3,10 +3,12 @@ import { onMounted, ref } from 'vue'
 const props = defineProps(['user_auth','formateur_id'])
 const is_collectif = ref( false )
 const matieres = ref( null )
+const sousMatieres = ref( null )
 const location = ref( null )
 const title = ref( "" )
 const nbr_participant = ref( 1 )
 var matiere_id = 1
+var sousMatiere_id = 1
 const description = ref( null )
 const date = ref( null )
 const horaire = ref( null )
@@ -20,12 +22,26 @@ const getMatieres = async () => {
     console.log(props.formateur_id);
 }
 
+const getSousMatieres = async () => {
+    let response =  await axios.get("http://127.0.0.1:8000/api/sousMatieres");
+    sousMatieres.value = response.data.sousMatieres
+}
+
+
 const onChange = (e) =>
 {
     var id = e.target.value;
     matiere_id = e.target.value;
     console.log("id",matiere_id);
 }
+
+const onChangeSM = (e) =>
+{
+    var idSM = e.target.value;
+    sousMatiere_id = e.target.value;
+    console.log("idSM",sousMatiere_id);
+}
+
 
 //add annonce on database
 const addAnnonce = async ()=>{
@@ -35,6 +51,7 @@ const addAnnonce = async ()=>{
         description: description.value,
         email: props.user_auth.email,
         matiere: matiere_id,
+        sousMatiere: sousMatiere_id,
         isIndividual:!is_collectif.value,
         heure: horaire.value,
         date: date.value,
@@ -57,7 +74,8 @@ const addAnnonce = async ()=>{
 // after the onMounted function, we get all subjects in result to display it on screen
 onMounted(() =>
 {
-    getMatieres()
+    getMatieres();
+    getSousMatieres();
 })
 
 </script>
@@ -102,16 +120,17 @@ onMounted(() =>
                 </div>
                 
                 <div class="form-group">
-                     <label for="exampleFormControlSelect1">Matières</label>
-                    
-                       <select class="form-control" name="matiere" v-on:change="onChange($event)">
-                                 
-                          <option  v-for="matiere in matieres" :key="matiere.id" :value="matiere.id">{{ matiere['name'] }}</option>
-                        
-                      </select>
-                      
+                    <label for="exampleFormControlSelect1">Matières</label>
+                        <select class="form-control" name="matiere" v-on:change="onChange($event)">   
+                            <option  v-for="matiere in matieres" :key="matiere.id" :value="matiere.id">{{ matiere['name'] }}</option>
+                        </select> 
+
+                    <label for="exampleFormControlSelect1">Sous-Matières</label>
+                        <select class="form-control" name="sousMatiere" v-on:change="onChangeSM($event)">   
+                            <option  v-for="sousMatiere in sousMatieres" :key="sousMatiere.id" :value="sousMatiere.id">{{ sousMatiere['name'] }}</option>
+                        </select> 
                 </div>
-                <p>{{ matiere_id }}</p>
+
                 
                 <div class="form-group">
                         <label for="date">Date:</label>

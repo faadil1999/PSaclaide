@@ -11,6 +11,7 @@ use App\Models\AIndividuel;
 use App\Models\Departement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -121,6 +122,27 @@ class AdminController extends Controller
 
         return view('admin.home', ['user' =>$user]); 
     }
+
+    public function updatePassword(Request $request){
+
+        $request->validate([
+            'old-password' => ['string', function ($attribute, $value, $fail) {
+                if (!Hash::check($value, Auth::user()->password)) {
+                    $fail('Le mot de passe actuel est incorrect.');
+                }
+            }],
+            'password' => $this->passwordRules()
+        ]);
+
+        $user = User::find(auth()->user()->id); 
+                
+        $user->update([
+            'password'  => Hash::make($request->input('password'))
+        ]);
+        
+        return view('admin.option', ['message' => 'Les modifications ont été enregistré !']);
+    }
+
         
     public function listeAnnonce()
     {
@@ -165,12 +187,13 @@ class AdminController extends Controller
                 'description' => $request->input('description'),
                 'author'      => $user->email,
                 'matiere_id'  => $request->matiere, 
-                'user_id'     => $user->id
+                'formateur_id'=> $formateur->id
             ]);
     
             if($request->mode == "modeInd"){
                 AIndividuel::create([
-                    'annonce_id' => $annonce->id
+                    'annonce_id' => $annonce->id,
+                    'formateur_id' => $user->id
                 ]);
                 $annonce->update([
                     'isIndividual' => true
@@ -178,15 +201,34 @@ class AdminController extends Controller
             }
             else{
                 ACollectif::create([
-                    'annonce_id' => $annonce->id
+                    'annonce_id' => $annonce->id,
+                    'formateur_id' => $user->id
                 ]);
                 $annonce->update([
                     'isIndividual' => false
                 ]);
             }
-        //}
+
+        // Récupérer un utilisateur et un rôle existants
+        $annonceSelectionne = Annonce::find($annonce->id);
+
+        // Ajouter la relation dans la table pivot
+        $annonceSelectionne->sousMatieres()->attach($request->sousMatiere);
+
         
         return view('admin.home',['user' => $user]);
     }
+
+    public function dashboard()
+    {
+        return view('admin.dashboard');
+    }
+
+    public function option()
+    {
+        return view('admin.option');
+    }
+}
+
 
 }

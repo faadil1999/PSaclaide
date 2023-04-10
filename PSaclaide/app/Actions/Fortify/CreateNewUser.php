@@ -2,12 +2,14 @@
 
 namespace App\Actions\Fortify;
 
-use App\Models\Formateur;
-use App\Models\Student;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use App\Mail\VerifMail;
+use App\Models\Student;
+use App\Models\Formateur;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
@@ -32,7 +34,11 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
-        ])->validate();
+            ], [
+                'email.unique'    => 'L\'email est déjà utilisé.',
+                'email.ends_with' => 'L\'email doit finir par "@universite-paris-saclay.fr".',
+            ]
+        )->validate();
        
         $user = User::create([
             'email' => $input['email'],
@@ -43,6 +49,8 @@ class CreateNewUser implements CreatesNewUsers
             'user_id' => $user->id
         ]);
 
-      return $user;
+        Mail::to($input['email'])->send(new VerifMail());
+
+        return $user;
     }
 }
