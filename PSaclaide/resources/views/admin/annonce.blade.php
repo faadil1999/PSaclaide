@@ -65,28 +65,123 @@
                 </div>
             </div>
         </div>
+      
         <div class="results-container">
             <h3>Résultats de la recherche</h3>
-            <div class="result-card">
-                <img src="/assets/img/departement/Centrale.png" alt="Photo du professeur" class="teacher-picture" />
-            </div>
-            <div class="info-container">
-                <h4>Nom du professeur</h4>
-                <p>Matière enseignée</p>
-                <p>École</p>
-            </div>
-            <div class="result-card">
-                <img src="/assets/img/departement/ENS.png" alt="Photo du professeur" class="teacher-picture" />
-            </div>
-            <div class="info-container">
-                <h4>Nom du professeur</h4>
-                <p>Matière enseignée</p>
-                <p>École</p>
+            <div class="container">
+                <div class="row">
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/design.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/psychology.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Buddhism and Modern Psychology</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/philosophy.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Introduction to Philosophy</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/photographs.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Advance on Seeing Through Photographs</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/arguments.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Think Again I: How to Understand Arguments</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/experience-design.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/user-research.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/critical-thinking.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Introduction to Logic and Critical Thinking</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="result-card col-md-4 mb-4">
+                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/art-design.png" alt="courses" />
+                      <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Modern and Contemporary Art and Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+{{--           
+                <div class="result-card">
+                    <img src="/assets/img/departement/Centrale.png" alt="Photo du professeur" class="teacher-picture" />
+                </div> --}}
+                {{-- <div class="info-container">
+                    <h4>Nom du professeur</h4>
+                    <p>Matière enseignée</p>
+                    <p>École</p>
+                </div> --}}
+                {{-- <div class="result-card">
+                    <img src="/assets/img/departement/ENS.png" alt="Photo du professeur" class="teacher-picture" />
+                </div>
+                <div class="result-card">
+                    <img src="/assets/img/departement/Centrale.png" alt="Photo du professeur" class="teacher-picture" />
+                </div> --}}
+                {{-- <div class="info-container">
+                    <h4>Nom du professeur</h4>
+                    <p>Matière enseignée</p>
+                    <p>École</p>
+                </div> --}}
+                {{-- <div class="result-card">
+                    <img src="/assets/img/departement/ENS.png" alt="Photo du professeur" class="teacher-picture" />
+                </div> --}}
+                {{-- <div class="info-container">
+                    <h4>Nom du professeur</h4>
+                    <p>Matière enseignée</p>
+                    <p>École</p>
+                </div> --}}
             </div>
             <!-- Ajoutez plus de résultats ici -->
         </div>
     </div>
     <script src="{{asset("auth_assets/js/script.js")}}" charset="utf-8"></script>
+    <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/bootstrap.min.css') }}">
 </body>
 
 </html>
+
+<style>
+   .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+
+    .grid-item {
+ 
+    
+    text-align: center;
+    }
+</style>

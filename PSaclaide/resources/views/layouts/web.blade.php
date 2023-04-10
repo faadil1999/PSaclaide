@@ -221,7 +221,7 @@
                         </show-element>
                         <show-student-element>
                             <li class="nav-item">
-                                <a href="tables.html">
+                                <a href="{{route("listeAnnonce")}}">
                                     <i class="la la-th"></i>
                                     <p>Cours disponibles</p>
                                     <span class="badge badge-count">6</span>

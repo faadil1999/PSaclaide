@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref , inject } from 'vue'
 const props = defineProps(['user_auth','formateur_id'])
 const is_collectif = ref( false )
 const matieres = ref( null )
@@ -14,6 +14,9 @@ const date = ref( null )
 const horaire = ref( null )
 
 // new Date().toJSON().slice(0,10).replace(/-/g,'/');
+const emitter = inject('emitter');
+const isFormateur = ref( null );
+
 
 //get all subjects from database
 const getMatieres = async () => {
@@ -74,6 +77,10 @@ const addAnnonce = async ()=>{
 // after the onMounted function, we get all subjects in result to display it on screen
 onMounted(() =>
 {
+    emitter.on('changeState', (value) => {   // *Listen* for event
+    //   console.log('show element', `value: ${value}`);
+      isFormateur.value = value;
+    });
     getMatieres();
     getSousMatieres();
 })
@@ -82,10 +89,10 @@ onMounted(() =>
 
 <template>
     <div>
-        <form @submit.prevent="addAnnonce()">
+        <form v-if="isFormateur" @submit.prevent="addAnnonce()">
         
             <div class="card-body">  
-                <h1>Bien test</h1>
+               
                 <div class="form-check">
                     <label>Type d'annonce</label><br/>
                    
@@ -153,5 +160,8 @@ onMounted(() =>
                 </div> 
             </div>
         </form>
+        <div v-else>
+            <h3>Vous devez mettre votre statut sur formateur !!</h3>
+        </div>
     </div>
 </template>

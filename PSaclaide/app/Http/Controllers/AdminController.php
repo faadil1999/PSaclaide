@@ -61,13 +61,13 @@ class AdminController extends Controller
                  ACollectif::create([
                         'annonce_id' => $annonce->id,
                         'maximum_number_people' => $request->input('participant_max'),
-                        'formateur_id'=> $request->id
+                        'formateur_id'=> $request->formateur_id
                 ]);
         }
         else{
             AIndividuel::create([
                 'annonce_id' => $annonce->id,
-                'formateur_id'=> $request->id
+                'formateur_id'=> $request->formateur_id
             ]);
         }
         // if($request->input('participant_max') != 0 )
@@ -147,9 +147,9 @@ class AdminController extends Controller
     public function listeAnnonce()
     {
 
-        $user = auth()->user();
+        $annonces = Annonce::all();
        
-        return view('admin.annonce',['annonces' => $user->annonces ]);
+        return view('admin.annonce',['annonces' => $annonces ]);
     }
 
     public function annonce()

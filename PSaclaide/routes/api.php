@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\APIMatieres;
 use Illuminate\Http\Request;
+use App\Http\Controllers\APIMatieres;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\APISousMatieres;
 
 /*
 |--------------------------------------------------------------------------

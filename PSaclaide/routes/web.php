@@ -18,7 +18,7 @@ use App\Http\Controllers\AnnonceController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('welcome');
 });
 
 Route::middleware('auth','verified')->group(function(){
