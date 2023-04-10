@@ -18,6 +18,7 @@ import AddAnnonce from './components/AddAnnonce.vue'
 import ToggleButton from './components/smallComponents/ToogleButtonComponent.vue'
 import ToggleDisplay from './components/smallComponents/ToggleDisplay.vue'
 import ShowElement from './components/ShowElement.vue'
+import ShowStudentElement from './components/ShowStudentElement.vue'
 
 const app = createApp({});
 const app_annonce_creation = createApp({});
@@ -40,5 +41,6 @@ admin.component('add-annonce', AddAnnonce);
 admin.component('toggle-display',ToggleDisplay);
 admin.component('toggle-button',ToggleButton);
 admin.component('show-element',ShowElement);
+admin.component('show-student-element', ShowStudentElement);
 
 admin.mount('#admin_management');

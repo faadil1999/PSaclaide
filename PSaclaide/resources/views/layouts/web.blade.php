@@ -210,27 +210,34 @@
                             </li>
                         @else
                         @endif
-                        <li class="nav-item">
-                            <a href="{{ route('form_annonce') }}">
-                                <i class="la la-table"></i>
-                                <p>Créer annonce</p>
-                                <span class="badge badge-count">14</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/annonce">
-                                <i class="la la-keyboard-o"></i>
-                                <p>Annonce</p>
-                                <span class="badge badge-count">50</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="tables.html">
-                                <i class="la la-th"></i>
-                                <p>Tables</p>
-                                <span class="badge badge-count">6</span>
-                            </a>
-                        </li>
+                        <show-element>
+                            <li class="nav-item">
+                                <a href="{{ route('form_annonce') }}">
+                                    <i class="la la-table"></i>
+                                    <p>Créer annonce</p>
+                                    <span class="badge badge-count">14</span>
+                                </a>
+                            </li>
+                        </show-element>
+                        <show-element>
+                            <li class="nav-item">
+                                <a href="/annonce">
+                                    <i class="la la-keyboard-o"></i>
+                                    <p>Mes annonces </p>
+                                    <span class="badge badge-count">50</span>
+                                </a>
+                            </li>
+                        </show-element>
+                        <show-student-element>
+                            <li class="nav-item">
+                                <a href="tables.html">
+                                    <i class="la la-th"></i>
+                                    <p>Tables</p>
+                                    <span class="badge badge-count">6</span>
+                                </a>
+                            </li>
+                        </show-student-element>
+                        
                         <li class="nav-item">
                             <a href="notifications.html">
                                 <i class="la la-bell"></i>
