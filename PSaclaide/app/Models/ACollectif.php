@@ -13,14 +13,13 @@ class ACollectif extends Model
     protected $fillable = [
         'annonce_id',
         'maximum_number_people',
-        'location' ,
         'formateur_id'    
     ];
 
     protected $attributes = [
         'maximum_number_people' => 10,
         'current_number_people' => 0,
-        'location' => '620 A200'
+       
     ];
 
     public function annonce()

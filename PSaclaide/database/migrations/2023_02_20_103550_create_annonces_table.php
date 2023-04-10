@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('author');
             $table->boolean('isAvailable');
             $table->boolean('isIndividual');
-            $table->timestamp('horaire');
-
+            $table->date('date');
+            $table->time('heure');
+            $table->string ('location');
             $table->unsignedBigInteger('matiere_id');
             $table->foreign('matiere_id')->references('id')->on('matieres');
 

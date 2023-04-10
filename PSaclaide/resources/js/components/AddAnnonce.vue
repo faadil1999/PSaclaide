@@ -1,11 +1,11 @@
 <script setup>
 import { onMounted, ref } from 'vue'
-const props = defineProps(['user_auth'])
+const props = defineProps(['user_auth','formateur_id'])
 const is_collectif = ref( false )
 const matieres = ref( null )
 const location = ref( null )
 const title = ref( "" )
-const nbr_participant = ref( null )
+const nbr_participant = ref( 1 )
 var matiere_id = 1
 const description = ref( null )
 const date = ref( null )
@@ -17,6 +17,7 @@ const horaire = ref( null )
 const getMatieres = async () => {
     let response =  await axios.get("http://127.0.0.1:8000/api/matieres");
     matieres.value = response.data.matieres
+    console.log(props.formateur_id);
 }
 
 const onChange = (e) =>
@@ -35,7 +36,9 @@ const addAnnonce = async ()=>{
         email: props.user_auth.email,
         matiere: matiere_id,
         isIndividual:!is_collectif.value,
-        id: props.user_auth.id,
+        heure: horaire.value,
+        date: date.value,
+        id: props.formateur_id,
         location:location.value,
         participant_max: nbr_participant.value
      }).then(function (response){
@@ -92,7 +95,7 @@ onMounted(() =>
                 <div v-else  class="form-group">
                     <small id="emailHelp" class="form-text text-muted">Une annonce individuel se passe avec une seule personne</small>
                 </div>
-                <div v-if="is_collectif" class="form-group">
+                <div  class="form-group">
                     <label for="email">Location</label>
                     <input type="text" class="form-control"  name="location" v-model="location"  placeholder="Lieu de deroulement">
                     <small id="emailHelp" class="form-text text-muted">Ex: Bat620 B120 ,Bat 640 E13.. </small>

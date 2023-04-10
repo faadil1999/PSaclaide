@@ -200,16 +200,7 @@
                                 <span class="badge badge-count">5</span>
                             </a>
                         </li>
-                        @if (Auth::user()->ready_to_use())
-                            <li class="nav-item">
-                                <a href="components.html">
-                                    <i class="la la-table"></i>
-                                    <p>Verification</p>
-                                    <span class="badge badge-count">14</span>
-                                </a>
-                            </li>
-                        @else
-                        @endif
+                       
                         <show-element>
                             <li class="nav-item">
                                 <a href="{{ route('form_annonce') }}">
@@ -232,7 +223,7 @@
                             <li class="nav-item">
                                 <a href="tables.html">
                                     <i class="la la-th"></i>
-                                    <p>Tables</p>
+                                    <p>Cours disponibles</p>
                                     <span class="badge badge-count">6</span>
                                 </a>
                             </li>

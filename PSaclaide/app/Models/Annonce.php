@@ -14,8 +14,11 @@ class Annonce extends Model
         'description',
         'matiere',
         'author',
+        'location',
         'isIndividual',
         'matiere_id',
+        'date',
+        'heure',
         'user_id'     
     ];
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('maximum_number_people');
             $table->integer('current_number_people');
-            $table->string('location');
+          
             $table->foreignId('annonce_id')->constrained()->onDelete('cascade');
             $table->foreignId('formateur_id')->constrained()->onDelete('cascade');
             $table->timestamps();
