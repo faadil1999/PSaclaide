@@ -187,7 +187,7 @@ class AdminController extends Controller
                 'description' => $request->input('description'),
                 'author'      => $user->email,
                 'matiere_id'  => $request->matiere, 
-                'formateur_id'=> $formateur->id
+                
             ]);
     
             if($request->mode == "modeInd"){
@@ -231,4 +231,4 @@ class AdminController extends Controller
 }
 
 
-}
+
