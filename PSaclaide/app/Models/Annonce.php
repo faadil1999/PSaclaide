@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Annonce extends Model
 {
@@ -19,7 +20,7 @@ class Annonce extends Model
         'matiere_id',
         'date',
         'heure',
-        'fomateur_id'     
+        'user_id'     
     ];
 
     protected $attributes = [
@@ -46,4 +47,10 @@ class Annonce extends Model
     {
         return $this->morphTo();
     }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
 }

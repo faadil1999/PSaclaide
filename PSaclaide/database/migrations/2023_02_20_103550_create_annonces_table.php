@@ -27,8 +27,7 @@ return new class extends Migration
             $table->unsignedBigInteger('matiere_id');
             $table->foreign('matiere_id')->references('id')->on('matieres');
 
-            $table->unsignedBigInteger('formateur_id');
-            $table->foreign('formateur_id')->references('id')->on('formateurs');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
             
             $table->timestamps();
         });

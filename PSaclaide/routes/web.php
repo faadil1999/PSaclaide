@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnnonceController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +43,7 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('storeAnnonce'); 
     Route::get('annonce/{id}',[AnnonceController::class, 'details'])->name("details_annonce");
 
-  
+    Route::post('subscribe/{id}',[StudentController::class , 'subscribe'])->name('subscribe');
 
 });
 

@@ -58,8 +58,9 @@ const addAnnonce = async ()=>{
         isIndividual:!is_collectif.value,
         heure: horaire.value,
         date: date.value,
-        id: props.formateur_id,
+        id: props.user_auth.id,
         location:location.value,
+        formateur_id:props.formateur_id,
         participant_max: nbr_participant.value
      }).then(function (response){
         console.log("SUCCESS");

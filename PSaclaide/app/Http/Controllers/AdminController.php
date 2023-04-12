@@ -9,6 +9,7 @@ use App\Models\Formateur;
 use App\Models\ACollectif;
 use App\Models\AIndividuel;
 use App\Models\Departement;
+use App\Models\SousMatiere;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -44,7 +45,7 @@ class AdminController extends Controller
 
     public function store_annonce(Request $request)
     {
-    
+        
         ///
         $annonce = Annonce::create([
             'title'       => $request->input('title'),
@@ -55,20 +56,25 @@ class AdminController extends Controller
             'location'    => $request->location,
             'date'        => $request->date,
             'heure'       => $request->heure, 
-            'user_id'     => $request->id
+            'user_id'    => $request->id
         ]);
+
+      
+        $sousmatiere = SousMatiere::find($request->sousMatiere);
+        $annonce->sousMatieres()->save($sousmatiere); 
+
         if($request->input('participant_max') > 1 ){
-                 ACollectif::create([
+                ACollectif::create([
                         'annonce_id' => $annonce->id,
                         'maximum_number_people' => $request->input('participant_max'),
                         'formateur_id'=> $request->formateur_id
                 ]);
         }
         else{
-            AIndividuel::create([
-                'annonce_id' => $annonce->id,
-                'formateur_id'=> $request->formateur_id
-            ]);
+                AIndividuel::create([
+                    'annonce_id' => $annonce->id,
+                    'formateur_id'=> $request->formateur_id
+                ]);
         }
         // if($request->input('participant_max') != 0 )
         // {

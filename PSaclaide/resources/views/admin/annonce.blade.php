@@ -24,6 +24,11 @@
             </div>
         </div>
     </header>
+    @if (session('status'))
+      <div class="alert alert-success">
+          {{ session('status') }}
+      </div>
+    @endif
     <div class="search-container">
         <input type="text" class="search-input" placeholder="Recherche..." />
     </div>
@@ -70,55 +75,21 @@
             <h3>Résultats de la recherche</h3>
             <div class="container">
                 <div class="row">
+                  @foreach ($annonces as $annonce)
                   <div class="result-card col-md-4 mb-4">
                     <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/design.png" alt="courses" />
                       <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">{{ $annonce->title }}</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                        <form action="{{ route('subscribe',['id'=>$annonce->id]) }}" method="post">
+                          @csrf
+                            <button type="submit" class="btn btn-primary btn-round">S'inscrire</button>
+                        </form>
+                        
                       </div>
                     </div>
                   </div>
-                  <div class="result-card col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/psychology.png" alt="courses" />
-                      <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Buddhism and Modern Psychology</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="result-card col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/philosophy.png" alt="courses" />
-                      <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Introduction to Philosophy</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="result-card col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/photographs.png" alt="courses" />
-                      <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Advance on Seeing Through Photographs</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="result-card col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/arguments.png" alt="courses" />
-                      <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Think Again I: How to Understand Arguments</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="result-card col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/experience-design.png" alt="courses" />
-                      <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="result-card col-md-4 mb-4">
-                    <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/user-research.png" alt="courses" />
-                      <div class="card-body">
-                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">User Research for User Experience Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-                      </div>
-                    </div>
-                  </div>
+                  @endforeach
+                
                   <div class="result-card col-md-4 mb-4">
                     <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/critical-thinking.png" alt="courses" />
                       <div class="card-body">
