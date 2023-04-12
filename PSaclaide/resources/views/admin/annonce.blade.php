@@ -81,6 +81,7 @@
             <div class="container">
                 <div class="row">
                   @foreach ($annonces as $annonce)
+                  @if ($annonce->author != Auth::user()->email)
                   <div class="result-card col-md-4 mb-4">
                     <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/design.png" alt="courses" />
                       <div class="card-body">
@@ -98,6 +99,8 @@
                       </div>
                     </div>
                   </div>
+                  @endif
+                  
                   @endforeach
                 
                   <div class="result-card col-md-4 mb-4">
