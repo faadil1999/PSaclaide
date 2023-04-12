@@ -229,6 +229,15 @@
                             </li>
                         </show-student-element>
                         
+                        <show-student-element>
+                            <li class="nav-item">
+                                <a href="{{route("cours_inscrit")}}">
+                                    <i class="la la-th"></i>
+                                    <p>Cours inscrits</p>
+                                    <span class="badge badge-count">6</span>
+                                </a>
+                            </li>
+                        </show-student-element>
                         <li class="nav-item">
                             <a href="notifications.html">
                                 <i class="la la-bell"></i>

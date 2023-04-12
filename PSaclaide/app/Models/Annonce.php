@@ -43,6 +43,16 @@ class Annonce extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function ACollectif()
+    {
+        return $this->hasOne(ACollectif::class);
+    }
+
+    public function AIndividuel()
+    {
+        return $this->hasOne(AIndividuel::class);
+    }
+
     public function annonceType()
     {
         return $this->morphTo();
@@ -53,4 +63,19 @@ class Annonce extends Model
         return $this->belongsToMany(Student::class);
     }
 
+    public function isAmongStudent($id_student)
+    {
+        $result = false ;
+        
+            foreach( $this->students as $student)
+            {
+                if($student->id == $id_student)
+                {
+                    $result = true;
+                }
+                
+            }
+
+            return $result;
+    }
 }

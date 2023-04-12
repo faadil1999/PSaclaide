@@ -16,13 +16,16 @@ class AIndividuel extends Model
     
     public function annonce()
     {
-        return $this->morphOne(Annonce::class, 'annonceType');
+        return $this->belongsTo(Annonce::class);
     }
-    
-    public function annonceUnique()
+    public function hasStudent()
     {
-        return $this->belongsTo(Annonce::class, 'annonceType_id')->where('annonceType_type', AIndividuel::class);
+        return count($this->annonce->students) != 0;
     }
+    // public function annonceUnique()
+    // {
+    //     return $this->belongsTo(Annonce::class, 'annonceType_id')->where('annonceType_type', AIndividuel::class);
+    // }
     
     public function formateur()
     {

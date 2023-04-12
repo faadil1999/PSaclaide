@@ -29,6 +29,11 @@
           {{ session('status') }}
       </div>
     @endif
+    @if (session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+  @endif
     <div class="search-container">
         <input type="text" class="search-input" placeholder="Recherche..." />
     </div>
@@ -80,10 +85,15 @@
                     <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/design.png" alt="courses" />
                       <div class="card-body">
                         <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">{{ $annonce->title }}</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                        @if ($annonce->isAmongStudent(Auth::user()->student->id))
+                          <button type="text" class="btn btn-warning">Deja inscrit</button>
+                        @else
                         <form action="{{ route('subscribe',['id'=>$annonce->id]) }}" method="post">
                           @csrf
                             <button type="submit" class="btn btn-primary btn-round">S'inscrire</button>
                         </form>
+                        @endif
+                        
                         
                       </div>
                     </div>

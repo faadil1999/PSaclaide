@@ -24,13 +24,13 @@ class ACollectif extends Model
 
     public function annonce()
     {
-        return $this->morphOne(Annonce::class, 'annonceType');
+        return $this->belongsTo(Annonce::class);
     }
 
-    public function annonceUnique()
-    {
-        return $this->belongsTo(Annonce::class, 'annonceType_id')->where('annonceType_type', ACollectif::class);
-    }
+    // public function annonceUnique()
+    // {
+    //     return $this->belongsTo(Annonce::class, 'annonceType_id')->where('annonceType_type', ACollectif::class);
+    // }
 
     public function formateur()
     {

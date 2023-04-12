@@ -38,6 +38,8 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     })->name("home");
     
     Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');
+    Route::get('/cours/inscrit',[StudentController::class ,'cours_inscrits'])->name('cours_inscrit');
+    Route::get('/cours/inscrit/{id}',[StudentController::class ,'detail_cours_inscrits'])->name('details_cours_inscrit');
     Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('form_annonce');
    
     Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('storeAnnonce'); 
