@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Matiere;
 use App\Models\SousMatiere;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,10 @@ class APISousMatieres extends Controller
      */
     public function show($id)
     {
-        //
+        $matiere = Matiere::find($id);
+        return response()->json([
+            'sousMatieres' => $matiere->sousMatieres
+        ], 200 );
     }
 
     /**

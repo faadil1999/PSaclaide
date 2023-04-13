@@ -19,7 +19,7 @@ class Matiere extends Model
         return $this->belongsToMany(Departement::class);
     }
 
-    public function sousMatiere()
+    public function sousMatieres()
     {
         return $this->hasMany(SousMatiere::class);
     }
