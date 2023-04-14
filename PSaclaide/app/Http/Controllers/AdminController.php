@@ -13,11 +13,11 @@ use App\Models\SousMatiere;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Actions\Fortify\PasswordValidationRules;
 
 class AdminController extends Controller
 {
-    //
-
+    use PasswordValidationRules;
 
     public function toggleStateIndex($id)
     {
@@ -103,7 +103,20 @@ class AdminController extends Controller
         // }
     }
 
+    public function newTeacher(Request $request)
+    {
+        $user = User::find(auth()->user()->id); 
+        if($request->prof == 'on'){
+            $user->update([
+                'isTeacher'  => true
+            ]);
+            Formateur::create([
+                'user_id' => $user->id
+            ]);
+        }
 
+        return view('admin.option', ['user' => $user]);
+    }
 
     public function profil()
     {
@@ -155,23 +168,24 @@ class AdminController extends Controller
             'password'  => Hash::make($request->input('password'))
         ]);
         
-        return view('admin.option', ['message' => 'Les modifications ont été enregistré !']);
+        return view('admin.option', ['message' => 'Les modifications ont été enregistré !', 'user' => auth()->user()]);
     }
-
         
     public function listeAnnonce()
     {
-
         $annonces = Annonce::all();
+        $departements = Departement::all();
        
-        return view('admin.annonce',['annonces' => $annonces ]);
+        return view('admin.annonce',['user' => auth()->user(), 'annonces' => $annonces, 'departements' => $departements]);
     }
 
     public function annonce()
     {
         $matieres = Matiere::All();
-
-        return view('admin.creationAnnonce',['user' => auth()->user(), 'matieres' => $matieres]);
+        $annonces = Annonce::all();
+        $departements = Departement::all();
+        
+        return view('admin.creationAnnonce',['matieres' => $matieres, 'departements' => $departements]);
     }
 
     public function createAnnonce(Request $request){
@@ -241,7 +255,7 @@ class AdminController extends Controller
 
     public function option()
     {
-        return view('admin.option');
+        return view('admin.option', ['user' => auth()->user()]);
     }
 
     public function corbeille()

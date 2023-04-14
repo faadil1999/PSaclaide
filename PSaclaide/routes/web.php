@@ -19,7 +19,7 @@ use App\Http\Controllers\StudentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::middleware('auth','verified')->group(function(){
@@ -56,5 +56,6 @@ Route::get('/profil',    [AdminController::class, 'profil'])->name('profil');
 Route::post('/home',     [AdminController::class, 'updateProfil'])->name('completerProfil');
 Route::get('/option',    [AdminController::class, 'option'])->name('option');
 Route::post('/option',   [AdminController::class, 'updatePassword'])->name('modifierPassword');
+Route::post('/optionTeacher',   [AdminController::class, 'newTeacher'])->name('devenirProfesseur');
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
