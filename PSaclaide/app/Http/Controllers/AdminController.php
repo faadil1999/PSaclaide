@@ -31,6 +31,15 @@ class AdminController extends Controller
         
     }
 
+    public function mesannonces()
+    {
+
+        $annonces = Auth::user()->annonces;
+
+        return view('annonce.mesannonces',['annonces'=>$annonces]);
+    }
+
+
     public function toggleState($id,Request $request)
     {
         
@@ -234,6 +243,23 @@ class AdminController extends Controller
     {
         return view('admin.option');
     }
+
+    public function corbeille()
+    {
+
+        $annonces = Auth::user()->annonces->onlyTrashed()->get(); 
+        return view('admin.corbeille',['annonces'=>$annonces]);
+    }
+
+    public function trash_annonce($id)
+    {
+
+        $annonce = Annonce::findOrFail($id);
+        $annonce->delete();
+
+        return redirect()->route('corbeille')->with('status','Vous vous etes inscrit avec succès');
+    }
+
 }
 
 

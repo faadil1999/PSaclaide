@@ -41,10 +41,13 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::get('/cours/inscrit',[StudentController::class ,'cours_inscrits'])->name('cours_inscrit');
     Route::get('/cours/inscrit/{id}',[StudentController::class ,'detail_cours_inscrits'])->name('details_cours_inscrit');
     Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('form_annonce');
-   
+    Route::get('corbeille',[AdminController::class,'corbeille'])->name('corbeille');
+    
     Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('storeAnnonce'); 
     Route::get('annonce/{id}',[AnnonceController::class, 'details'])->name("details_annonce");
 
+    Route::post('trash_annonce/{id}',[AdminController::class,'trash_annonce'])->name("trash_annonce");
+    Route::get('/mesannonces',[AdminController::class,'mesannonces'])->name('mesannonces');
     Route::post('subscribe/{id}',[StudentController::class , 'subscribe'])->name('subscribe');
 
 });

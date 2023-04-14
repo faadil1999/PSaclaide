@@ -28,7 +28,7 @@ return new class extends Migration
             $table->foreign('matiere_id')->references('id')->on('matieres');
 
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
-            
+          
             $table->timestamps();
         });
     }

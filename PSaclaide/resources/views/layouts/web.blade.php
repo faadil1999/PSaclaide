@@ -212,9 +212,18 @@
                         </show-element>
                         <show-element>
                             <li class="nav-item">
-                                <a href="/annonce">
+                                <a href="{{route('mesannonces')}}">
                                     <i class="la la-keyboard-o"></i>
                                     <p>Mes annonces </p>
+                                    <span class="badge badge-count">50</span>
+                                </a>
+                            </li>
+                        </show-element>
+                        <show-element>
+                            <li class="nav-item">
+                                <a href="{{route('corbeille')}}">
+                                    <i class="la la-trash-o"></i>
+                                    <p>Ma corbeille </p>
                                     <span class="badge badge-count">50</span>
                                 </a>
                             </li>
@@ -272,6 +281,11 @@
             
         </div>
         <div class="main-panel">
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             @yield('main')
 
             <footer class="footer">

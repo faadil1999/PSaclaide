@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Annonce extends Model
 {
-    use HasFactory;
+    use HasFactory , SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -22,6 +23,8 @@ class Annonce extends Model
         'heure',
         'user_id'     
     ];
+
+    protected $dates = ['deleted_at'];
 
     protected $attributes = [
         'isAvailable' => true,
