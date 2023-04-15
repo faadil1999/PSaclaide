@@ -225,6 +225,18 @@ class AdminController extends Controller
         return view('admin.home',['user' => $user]);
     }
 
+    public function mes_cours()
+    {
+        $annonces = Auth::user()->annonces;
+        return view('annonce.mes_annonces',['annonces'=> $annonces ]);
+    }
+
+    public function detail_mes_cours($id)
+    {
+        $annonce = Annonce::find($id);
+        return view('annonce.details_formateur',['user' => auth()->user(),'annonce'=>$annonce]);
+    }
+
     public function dashboard()
     {
         return view('admin.dashboard');

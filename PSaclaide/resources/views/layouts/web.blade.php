@@ -212,7 +212,7 @@
                         </show-element>
                         <show-element>
                             <li class="nav-item">
-                                <a href="/annonce">
+                                <a href="{{route('mes_cours')}}">
                                     <i class="la la-keyboard-o"></i>
                                     <p>Mes annonces </p>
                                     <span class="badge badge-count">50</span>

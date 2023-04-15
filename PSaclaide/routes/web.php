@@ -38,13 +38,15 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     })->name("home");
     
     Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');
-    Route::get('/cours/inscrit',[StudentController::class ,'cours_inscrits'])->name('cours_inscrit');
-    Route::get('/cours/inscrit/{id}',[StudentController::class ,'detail_cours_inscrits'])->name('details_cours_inscrit');
-    Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('form_annonce');
-   
-    Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('storeAnnonce'); 
-    Route::get('annonce/{id}',[AnnonceController::class, 'details'])->name("details_annonce");
 
+    Route::get('/cours/inscrit',[StudentController::class ,'cours_inscrits'])->name('cours_inscrit');
+    Route::get('/cours/formateur',[AdminController::class ,'mes_cours'])->name('mes_cours');
+    Route::get('/cours/formateur/detail/{id}',[AdminController::class ,'detail_mes_cours'])->name('details_cours_formateur');
+    Route::get('/cours/inscrit/detail/{id}',[StudentController::class ,'detail_cours_inscrits'])->name('details_cours_inscrit');    
+    
+    Route::get('/newAnnonce', [AdminController::class, 'annonce'])->name('form_annonce');
+    Route::post('/newAnnonce', [AdminController::class, 'createAnnonce'])->name('storeAnnonce'); 
+    
     Route::post('subscribe/{id}',[StudentController::class , 'subscribe'])->name('subscribe');
 
 });
@@ -54,4 +56,4 @@ Route::post('/home',     [AdminController::class, 'updateProfil'])->name('comple
 Route::get('/option',    [AdminController::class, 'option'])->name('option');
 Route::post('/option',   [AdminController::class, 'updatePassword'])->name('modifierPassword');
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
-
+Route::put('/cours/formateur/detail/{id}', [AnnonceController::class, 'updateAnnonce'])->name('modifierAnnonce');

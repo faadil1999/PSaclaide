@@ -8,7 +8,7 @@
                 </div>
                 <div class="card-body">
                     <div class="card-sub">
-                       Voici la liste des cours auquels vous etes inscrit
+                       Voici la liste des cours que vous donnez
                     </div>
                     <table class="table mt-3">
                         <thead>
@@ -38,7 +38,8 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                                        <a class="dropdown-item" href="{{route("details_cours_inscrit",["id"=>$annonce->id])}}">Details</a>
+
+                                        <a class="dropdown-item" href="{{route("details_cours_formateur",["id"=>$annonce->id])}}">Details</a>
                                         <a class="dropdown-item" href="#">Another action</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="#">Something else here</a>

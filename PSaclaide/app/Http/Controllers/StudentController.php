@@ -37,9 +37,6 @@ class StudentController extends Controller
             
             
         }
-       
-       
-
         return redirect()->route('listeAnnonce')->with('status','Vous vous etes inscrit avec succès');
     }
 
@@ -50,10 +47,11 @@ class StudentController extends Controller
         return view('annonce.annonce_inscrit',['annonces'=> $annonces ]);
     }
 
+
     public function detail_cours_inscrits($id)
     {
         $annonce = Annonce::find($id);
-
-        return view('annonce.details',['annonce'=>$annonce]);
+        return view('annonce.details_eleve',['user' => auth()->user(), 'annonce'=>$annonce]);
     }
+
 }
