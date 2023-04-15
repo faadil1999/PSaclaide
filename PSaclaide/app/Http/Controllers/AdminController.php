@@ -36,6 +36,7 @@ class AdminController extends Controller
 
         $annonces = Auth::user()->annonces;
 
+ 
         return view('annonce.mesannonces',['annonces'=>$annonces]);
     }
 
@@ -175,7 +176,7 @@ class AdminController extends Controller
     {
         $annonces = Annonce::all();
         $departements = Departement::all();
-       
+      
         return view('admin.annonce',['user' => auth()->user(), 'annonces' => $annonces, 'departements' => $departements]);
     }
 
@@ -261,7 +262,7 @@ class AdminController extends Controller
     public function corbeille()
     {
 
-        $annonces = Auth::user()->annonces->onlyTrashed()->get(); 
+        $annonces = Annonce::onlyTrashed()->get(); 
         return view('admin.corbeille',['annonces'=>$annonces]);
     }
 

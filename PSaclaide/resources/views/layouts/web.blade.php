@@ -1,161 +1,147 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>apropos_dashboard</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css"> 
+		<link rel="stylesheet" href="{{asset("admin_assets/assets/css/stylesidebar.css")}}">
+		<link rel="stylesheet" href="{{asset("admin_assets/assets/css/style.css")}}">
+	</head>
+	<body>
+        @vite('resources/css/app.css')
+		<div class="wrapper d-flex align-items-stretch"  id="admin_management">
+           
+			<nav id="sidebar">
+				<div class="p-4 pt-5">
+					<a href="#" class="img logo rounded-circle mb-5" style="background-image: url({{asset("admin_assets/assets/images/logo.png")}});"></a>
+					<ul class="list-unstyled components mb-5">
+						<li>
+							<a href="/home" data-toggle="collapse" aria-expanded="false" >Mon profil</a>
+						</li>
+                        <show-element>
+                            <li>
+                                <a href="{{route('mesannonces')}}">Mes cours</a>
+                            </li>
+                        </show-element>
+                        <show-element>
+                            <li>
+                                <a href="{{ route('form_annonce') }}">
+                                  Créer annonce 
+                                </a>
+                            </li>
+                        </show-element>
+                         <show-element>
+                            <li>
+                                <a href="{{route('corbeille')}}">
+                                    
+                                    Ma corbeille    
+                                </a>
+                            </li>
+                        </show-element>
+                        <show-student-element>
+                            <li>
+                                <a href="{{route("listeAnnonce")}}">
+                                    Cours disponibles
+                                </a>
+                            </li>
+                        </show-student-element>
+                        <show-student-element>
+                            <li>
+                                <a href="{{route("cours_inscrit")}}">
+                                   
+                                    Cours inscrits
+                                   
+                                </a>
+                            </li>
+                        </show-student-element>
+                     
+						<li>
 
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Ready Bootstrap Dashboard</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
-        name='viewport' />
-    <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
-    <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/ready.css') }}">
-    <link rel="stylesheet" href="{{ asset('admin_assets/assets/css/demo.css') }}">
-</head>
-
-<body>
-    @vite('resources/css/app.css')
-
-    <div class="wrapper" id="admin_management">
-        <div class="main-header">
-            <div class="logo-header">
-                <a href="index.html" class="logo">
-                    Ready Dashboard
-                </a>
-                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"
-                    data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
-            </div>
-            <nav class="navbar navbar-header navbar-expand-lg">
-                <div class="container-fluid">
-
-                    <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                        <div class="input-group">
-                            <input type="text" placeholder="Search ..." class="form-control">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="la la-search search-icon"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </form>
-                    <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="la la-envelope"></i>
+							<a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" >Historique</a>
+						</li>
+						<li>
+							<a href="auth-normal-sign-in.html" onclick="event.preventDefault(); document.getElementById('form_logout').submit()">
+                                <i class="ti-layout-sidebar-left"></i> Logout
                             </a>
-
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
+                            
+                            <form action="{{ route('logout') }}" method="POST" id="form_logout">
+                                @csrf
+                            </form>
+						</li>
+						
+						<div class="space"></div>
+						{{-- <li>
+							<div class = slider>
+								<a href="#" class="btn btn-primary btn-lg active" id = "slider1" role="button" aria-pressed="true">Mode élève</a>
+								<div class="space"></div>
+								<a href="#" class="btn btn-primary btn-lg" role="button" id="slider2" aria-pressed="true">Mode professeur</a>
+							</div>
+						</li> --}}
+                        <li class="nav-item">
+                            <toggle-button :user_auth="{{Auth::user()}}"></toggle-button>
                         </li>
+					</ul>
+					
+				</div>
+			</nav>
+            <div id="content" class="p-4 p-md-5">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container-fluid">
+						<button type="button" id="sidebarCollapse" class="btn btn-primary">
+							<i class="fa fa-bars"></i>
+							<span class="sr-only">Toggle Menu</span>
+						</button>
+						<button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="nav navbar-nav ml-auto">
+                                <show-student-element>
+                                    <li class="nav-item active"><button class="btn btn-primary" id="cours" href="{{route('listeAnnonce')}}">Réserver un cours</a></li>
+                                </show-student-element>
+                                
+								<div class="space"></div>
+								<show-element>
+                                    <li class="nav-item active"><button class="btn btn-primary" id="cours" href="{{ route('form_annonce') }}">Créer une annonce</a></li>
+								</show-element>
+                                    <div class="space"></div>
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="imgprofil" class="img-fluid" src="./images/logopolytech.png">Mehdi</a>
+									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+										<a class="dropdown-item" href="#">Profil</a>
+										
+										<a class="dropdown-item" href="#">Déconnexion</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				@yield("main")
+               
+                  </div>
+			</div>
+		
+	
 
-                        <li class="nav-item dropdown hidden-caret">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="la la-bell"></i>
-                                <span class="notification">3</span>
-                            </a>
-                            <ul class="dropdown-menu notif-box" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <div class="dropdown-title">You have 4 new notification</div>
-                                </li>
-                                <li>
-                                    <div class="notif-center">
-                                        <a href="#">
-                                            <div class="notif-icon notif-primary"> <i class="la la-user-plus"></i>
-                                            </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    New user registered
-                                                </span>
-                                                <span class="time">5 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-icon notif-success"> <i class="la la-comment"></i> </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Rahmad commented on Admin
-                                                </span>
-                                                <span class="time">12 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-img">
-                                                <img src="{{ asset('admin_assets/assets/img/profile2.jpg') }}"
-                                                    alt="Img Profile">
-                                            </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Reza send messages to you
-                                                </span>
-                                                <span class="time">12 minutes ago</span>
-                                            </div>
-                                        </a>
-                                        <a href="#">
-                                            <div class="notif-icon notif-danger"> <i class="la la-heart"></i> </div>
-                                            <div class="notif-content">
-                                                <span class="block">
-                                                    Farrah liked Admin
-                                                </span>
-                                                <span class="time">17 minutes ago</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a class="see-all" href="javascript:void(0);"> <strong>See all
-                                            notifications</strong> <i class="la la-angle-right"></i> </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
-                                aria-expanded="false"> <img src="{{ asset('admin_assets/assets/img/profile.jpg') }}"
-                                    alt="user-img" width="36"
-                                    class="img-circle"><span>{{ auth()->user()->first_name }}</span></span> </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li>
-                                    <div class="user-box">
-                                        <div class="u-img"><img
-                                                src="{{ asset('admin_assets/assets/img/profile.jpg') }}"
-                                                alt="user"></div>
-                                        <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@themekita.com</p><a href="profile.html"
-                                                class="btn btn-rounded btn-danger btn-sm">View Profile</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="ti-user"></i> My Profile</a>
-                                <a class="dropdown-item" href="#"></i> My Balance</a>
-                                <a class="dropdown-item" href="#"><i class="ti-email"></i> Inbox</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account
-                                    Setting</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="auth-normal-sign-in.html"
-                                    onclick="event.preventDefault(); document.getElementById('form_logout').submit()"><i
-                                        class="fa fa-power-off"></i> Logout</a>
+@vite('resources/js/app.js')
+<script src="{{asset("admin_assets/assets/js/jquery.min.js")}}"></script>
+<script src="{{asset("admin_assets/assets/js/popper.js")}}"></script>
+<script src="{{asset("admin_assets/assets/js/bootstrap.min.js")}}"></script>
+<script src="{{asset("admin_assets/assets/js/main.js")}}"></script>
+<script src="{{asset("admin_assets/assets/js/index.js")}}"></script>
+</body>
+</html>
 
-                            </ul>
-                            <!-- /.dropdown-user -->
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        
+
+
+{{--         
         <div class="sidebar">
-            <toggle-display :user_auth="{{Auth::user()}}">
+         
                 <div class="scrollbar-inner sidebar-wrapper">
                     <div class="user">
                         <div class="photo">
@@ -276,93 +262,10 @@
                         </li>
                        
                     </ul>
-                </div>
-            </toggle-display>
+                </div> --}}
+       
             
-        </div>
-        <div class="main-panel">
-            @if (session('status'))
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            @endif
-            @yield('main')
+       
+ 
 
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav class="pull-left">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="http://www.themekita.com">
-                                    ThemeKita
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Help
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="https://themewagon.com/license/#free-item">
-                                    Licenses
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="copyright ml-auto">
-                        2018, made with <i class="la la-heart heart text-danger"></i> by <a
-                            href="http://www.themekita.com">ThemeKita</a>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div></div>
-   @vite('resources/js/app.js')
-    <!-- Modal -->
-    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary">
-                    <h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body text-center">
-                    <p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development</p>
-                    <p>
-                        <b>We'll let you know when it's done</b>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
-<script src="{{ asset('admin_assets/assets/js/core/jquery.3.2.1.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/core/popper.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/core/bootstrap.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/chartist/chartist.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/chartist/plugin/chartist-plugin-tooltip.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/bootstrap-toggle/bootstrap-toggle.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/jquery-mapael/jquery.mapael.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/jquery-mapael/maps/world_countries.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/chart-circle/circles.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/ready.min.js') }}"></script>
-<script src="{{ asset('admin_assets/assets/js/demo.js') }}"></script>
 
-</html>
-
-<a href="auth-normal-sign-in.html" onclick="event.preventDefault(); document.getElementById('form_logout').submit()">
-    <i class="ti-layout-sidebar-left"></i> Logout
-</a>
-
-<form action="{{ route('logout') }}" method="POST" id="form_logout">
-    @csrf
-</form>

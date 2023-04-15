@@ -22,6 +22,7 @@
                         <tbody>
                             @foreach ($annonces as $annonce )
                             <tr>
+                                @if ($annonce->user->email == Auth::user()->email)
                                 <td>{{$annonce->id}}</td>
                                 <td>{{ $annonce->title }}</td>
                                 @if ($annonce->isIndividual)
@@ -47,6 +48,8 @@
                                     </ul>
 
                                 </div></td>
+                                @endif
+                                
                             </tr>   
 
                             @endforeach
