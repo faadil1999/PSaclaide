@@ -18,7 +18,7 @@ use App\Http\Controllers\APISousMatieres;
 */
 
 Route::resource('matieres',APIMatieres::class );
-Route::resource('sousMatieres', APISousMatieres::class );
+Route::get('sousMatieres/{id}', [APISousMatieres::class , 'show' ] );
 Route::post('/store/annonce/', [AdminController::class, 'store_annonce']);
 Route::put('/toggleState/{id}',[AdminController::class , 'toggleState']);
 Route::get('/toggleState/{id}',[AdminController::class , 'toggleStateIndex']);

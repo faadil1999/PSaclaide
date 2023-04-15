@@ -6,7 +6,8 @@ console.log("sdsdsad");
 
 const props = defineProps(['user_auth'])
 const isFormateur = ref( false );
-
+const actvProf = ref("Desactivé")
+const actvStud = ref("Activé")
 const emitter = inject('emitter');
 
 const getState = async () => {
@@ -28,6 +29,14 @@ const toggle = async(e) => {
 //    UserState.$emit('changeState',this.isFormateur) 
     await putState(e);
    
+    if(isFormateur.value == true){
+        actvProf.value = "Activé"
+        actvStud.value = ""
+    }else
+    {
+        actvProf.value = ""
+        actvStud.value = "Activé"
+    }
     console.log(`toogle ${isFormateur.value}`);
    emitter.emit('changeState',isFormateur.value);
  
@@ -35,7 +44,14 @@ const toggle = async(e) => {
 
 onBeforeMount( async()=>{
    await getState();
-    
+   if(isFormateur.value == true){
+        actvProf.value = "Activé"
+        actvStud.value = ""
+    }else
+    {
+        actvProf.value = ""
+        actvStud.value = "Activé"
+    }
     emitter.emit('changeState',isFormateur.value);
     
 })
@@ -51,14 +67,16 @@ onBeforeMount( async()=>{
 <template>
     <div>
         <button
+        
+            class="btn-lg mb-4"
             @click="toggle(true)"
-            :class="[isFormateur ? 'btn btn-warning' : 'btn btn-default']"
-        >Formateur </button>
+            :class="[isFormateur ? 'btn btn-warning' : 'btn btn-dark']"
+        >Mode professeur {{ actvProf }} </button>
         
         <button
-            class="student"
+            class="btn-lg"
             @click="toggle(false)"
-            :class="[isFormateur ? 'btn btn-default' : 'btn btn-success']"
-        >Etudiant </button>
+            :class="[isFormateur ? 'btn btn-dark' : 'btn btn-success']"
+        >Mode élève {{ actvStud }} </button>
     </div>
 </template>

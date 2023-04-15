@@ -26,15 +26,17 @@ const getMatieres = async () => {
 }
 
 const getSousMatieres = async () => {
-    let response =  await axios.get("http://127.0.0.1:8000/api/sousMatieres");
+    let response =  await axios.get(`http://127.0.0.1:8000/api/sousMatieres/${matiere_id}`);
+    console.log('Sous Matieres');
     sousMatieres.value = response.data.sousMatieres
 }
 
 
-const onChange = (e) =>
+const onChange =async (e) =>
 {
     var id = e.target.value;
     matiere_id = e.target.value;
+    await getSousMatieres();
     console.log("id",matiere_id);
 }
 

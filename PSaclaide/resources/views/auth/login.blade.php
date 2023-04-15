@@ -51,16 +51,22 @@
     </div>
 </div>
 @if ($errors->has('email'))
-<div class="error" style="color: red">
-    {{ $errors->first('email') }}
+<div class="erreur-container" id="container">
+	<div class="error" style="color: red">
+		<strong>{{ $errors->first('email') }}</strong>
+	</div>
 </div>
 @elseif ($errors->has('password'))
-<div class="error" style="color: red">
-    {{ $errors->first('password') }}
+<div class="erreur-container" id="container">
+	<div class="error" style="color: red">
+		<strong>{{ $errors->first('password') }}</strong>
+	</div>
 </div>
 @elseif ($errors->has('password_confirmation'))
-<div class="error" style="color: red">
-    {{ $errors->first('password_confirmation') }}
+<div class="erreur-container" id="container">
+	<div class="error" style="color: red">
+		<strong>{{ $errors->first('password_confirmation') }}</strong>
+	</div>
 </div>
 @endif
 
