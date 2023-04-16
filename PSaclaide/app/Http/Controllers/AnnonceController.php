@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
 {
-    // public function details($id)
-    // {
-    //     $annonce = Annonce::find($id);
-    //     return view('annonce.details',['user' => auth()->user(),'annonce'=>$annonce]);
-    // }
+    public function details($id)
+    {
+        $annonce = Annonce::find($id);
+        return view('annonce.details',['user' => auth()->user(),'annonce'=>$annonce]);
+    }
 
     public function updateAnnonce(Request $request){
         $id = $request->input('id');
@@ -26,7 +26,7 @@ class AnnonceController extends Controller
         $annonce->save();
 
         $annonces = Annonce::where('user_id', auth()->user()->id)->get();
-        return view('annonce.mes_annonces',['annonces'=> $annonces ]);
+        return view('annonce.mesannonces',['annonces'=> $annonces ]);
     }
 
 }

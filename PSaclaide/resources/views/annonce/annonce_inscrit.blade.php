@@ -38,6 +38,7 @@
                                     </button>
 
                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+
                                         <a class="dropdown-item" href="{{route("details_cours_inscrit",["id"=>$annonce->id])}}">Details</a>
                                         <a class="dropdown-item" href="#">Another action</a>
                                         <div class="dropdown-divider"></div>
@@ -77,89 +78,39 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <span>Cours de mathématiques</span>
-                            <span>Algèbre linéaire</span>
+                            <span>{{$annonce->title}}</span>
+                            
                         </h5>
                         <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élève : Hugues Martin</span><br>
-                            <span>Salle : B120 Polytech</span>
+                            <span>Formateur : {{$annonce->user->first_name}}</span><br>
+                            <span>Emplacement : {{ $annonce->location }}</span>
                         </h6>
                         <p class="card-text">
-                            Durée du cours : 2h30<br>
-                            horaires : 14h30-17h<br>
-                            Jour : 14/05
+                            Jour: {{ date('d/m/Y', strtotime($annonce->date)) }}<br>
+                            Horaires: {{ substr($annonce->heure, 0, 5) }}<br>
+                            Matière: {{$annonce->matiere->name}}<br>
+                            Sous-matière: @foreach ($annonce->sousMatieres  as $item)
+                                <span>{{ $item->name }}</span>
+                            @endforeach 
                         </p>
                         @if ($annonce->isIndividual)
-                        <td><span class="badge badge-success">Individuel</span></td>                                
-                    @else
-                        <td><span class="badge badge-info">Collectif</span></td>
-                    @endif
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
+                            <td><span class="badge badge-success">Individuel</span></td>                                
+                        @else
+                            <td><span class="badge badge-info">Collectif</span></td>
+                        @endif <br>
+                        
+                        <div class="button-container">
+                            <button class="btn btn-primary" href="#" role="button">Annuler</button>
+                            <form action="{{route("details_cours_inscrit",["id"=>$annonce->id])}}" method="get">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Détail</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>	
             @endforeach
         
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span>Cours de mathématiques</span>
-                            <span>Dérivés</span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élève : Mathis Chevalier</span><br>
-                            <span>Salle à définir</span>
-                        </h6>
-                        <p class="card-text">
-                            Durée du cours : 1h<br>
-                            horaires : 10h-11h<br>
-                            Jour : 14/05
-                        </p>
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span>Cours de Physique</span>
-                            <span>Thermodynamique</span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élèves : Doballah Mehdi; Amrouche Mourad</span><br>
-                            <span>Salle : Hall central</span>
-                        </h6>
-                        <p class="card-text">
-                            Durée du cours : 1h30<br>
-                            horaires : 18h-19h30<br>
-                            Jour : 14/05
-                        </p>
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span>Cours de Physique</span>
-                            <span>Thermodynamique</span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élèves : Doballah Mehdi; Amrouche Mourad</span><br>
-                            <span>Salle : Hall centrale</span>
-                        </h6>
-                        <p class="card-text">
-                            Durée du cours : 1h30<br>
-                            horaires : 13h30-15h<br>
-                            Jour : 14/05
-                        </p>
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection

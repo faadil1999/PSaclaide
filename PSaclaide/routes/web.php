@@ -40,7 +40,7 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');
 
     Route::get('/cours/inscrit',[StudentController::class ,'cours_inscrits'])->name('cours_inscrit');
-    //Route::get('/cours/formateur',[AdminController::class ,'mes_cours'])->name('mes_cours');
+    Route::get('/mesannonces',[AdminController::class,'mesannonces'])->name('mesannonces');
     Route::get('/cours/formateur/detail/{id}',[AdminController::class ,'detail_mes_cours'])->name('details_cours_formateur');
     Route::get('/cours/inscrit/detail/{id}',[StudentController::class ,'detail_cours_inscrits'])->name('details_cours_inscrit');    
     
@@ -51,7 +51,6 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::get('annonce/{id}',[AnnonceController::class, 'details'])->name("details_annonce");
 
     Route::post('trash_annonce/{id}',[AdminController::class,'trash_annonce'])->name("trash_annonce");
-    Route::get('/mesannonces',[AdminController::class,'mesannonces'])->name('mesannonces');
     Route::post('subscribe/{id}',[StudentController::class , 'subscribe'])->name('subscribe');
 
 });
