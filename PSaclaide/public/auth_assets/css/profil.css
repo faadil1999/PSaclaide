@@ -29,6 +29,11 @@ form {
     width: 100%;
 }
 
+#categorie {
+    font-weight: bold;
+    font-size: small;
+}
+
 input,
 select {
     background-color: #eee;

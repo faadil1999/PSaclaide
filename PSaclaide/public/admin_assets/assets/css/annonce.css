@@ -18,12 +18,19 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo img{
     float: left
+}
+
+.img-fluid {
+    margin-right: 15px;
+    max-width: min-content;
+    height: 50px;
+    width: 125px;    
+    border-radius: 5%;
 }
 
 button {

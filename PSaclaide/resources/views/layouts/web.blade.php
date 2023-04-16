@@ -26,20 +26,21 @@
 						</li>
                         <show-element>
                             <li>
-                                <a href="{{route('mesannonces')}}">Mes cours</a>
+                                <a href="{{ route('form_annonce') }}">
+                                    Créer annonce 
+                                </a>
                             </li>
                         </show-element>
                         <show-element>
                             <li>
-                                <a href="{{ route('form_annonce') }}">
-                                  Créer annonce 
+                                <a href="{{route('mesannonces')}}">
+                                    Mes cours
                                 </a>
                             </li>
                         </show-element>
-                         <show-element>
+                        <show-element>
                             <li>
                                 <a href="{{route('corbeille')}}">
-                                    
                                     Ma corbeille    
                                 </a>
                             </li>
@@ -54,9 +55,7 @@
                         <show-student-element>
                             <li>
                                 <a href="{{route("cours_inscrit")}}">
-                                   
                                     Cours inscrits
-                                   
                                 </a>
                             </li>
                         </show-student-element>
@@ -110,8 +109,9 @@
 								</show-element>
                                     <div class="space"></div>
 								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="imgprofil" class="img-fluid" src="./images/logopolytech.png">Mehdi</a>
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="imgprofil" class="img-fluid" src="{{asset("admin_assets/assets/images/logopolytech.png")}}">Mehdi</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
 										<a class="dropdown-item" href="#">Profil</a>
 										
 										<a class="dropdown-item" href="#">Déconnexion</a>

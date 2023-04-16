@@ -18,22 +18,17 @@
        
                 <a class="navbar-brand" href="#">
                     <img src="{{asset("admin_assets/assets/images/logodetoure.png")}}" width="60" height="60" class="d-inline-block align-top" alt="">
-                    
-                  </a>
-                  
-                <div class="form-inline">
-                   <button id="switch" class="switch-btn">Passer en professeur</button>
+                </a>
           
             <div class="profile-container">
                 
                 <div class="nav-item dropdown mx-4">
                     <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     User
+                    <img id="imgprofil" class="img-fluid" src="{{asset("admin_assets/assets/images/logouniv.png")}}">{{Auth::user()->first_name}}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a class="dropdown-item" href="#">Deconnexion</a>
                       <a class="dropdown-item" href="/home">Tableau de bord</a>
-                      
+                      <a class="dropdown-item" href="#">Déconnexion</a>                      
                     </div>
                   </div>
                 </div>
@@ -50,39 +45,76 @@
             <h3>Filtres</h3>
                 
             <div class="sub-filter">
-                <h4>jour</h4>
+                <h4>Jour</h4>
                 <div class="checkbox-container">
                     <input type="date" name="data[]" id="dateselect">   
                 </div>
+                <br>
                 <h4>Horaire</h4>
                 <div class="checkbox-container">
                     <label><input type="checkbox" name="horaire" id="8" value="8"> 8h00 - 9h00</label>
                     <label><input type="checkbox" name="horaire" id="8"value="9"> 9h00 - 10h00</label>
                     <nav id="filtresheure">
-                        <button aria-expanded="false" id="">Tout afficher</button>
-                        <ul hidden>
-                            <label><input type="checkbox" name="horaire" value="10"> 10h00 - 11h00</label>
-                            <label><input type="checkbox" name="horaire" value="11"> 11h00 - 12h00</label>
-                            <label><input type="checkbox" name="horaire" value="12"> 12h00 - 13h00</label>
-                            <label><input type="checkbox" name="horaire" value="13"> 13h00 - 14h00</label>
-                            <label><input type="checkbox" name="horaire" value="14"> 14h00 - 15h00</label>
-                            <label><input type="checkbox" name="horaire" value="15"> 15h00 - 16h00</label>
-                            <label><input type="checkbox" name="horaire" value="16"> 16h00 - 17h00</label>
-                            <label><input type="checkbox" name="horaire" value="17"> 17h00 - 18h00</label>
-                            <label><input type="checkbox" name="horaire" value="18"> 18h00 - 19h00</label>
-                            <label><input type="checkbox" name="horaire" value="19"> 19h00 - 20h00</label>
-                            <label><input type="checkbox" name="horaire" value="20"> 20h00 - 21h00</label>
-                        </ul>
+                        
+                        <div id="horaires" style="display:none;">
+                            @for ($i = 10; $i < 24; $i++)
+                                <label><input type="checkbox" name="horaire" value="{{$i}}"> {{$i}}h00 - {{$i+1}}h00</label>
+                            @endfor
+                        </div>
+
+                        <script>
+                        function toggleHoraires() {
+                            var horaires = document.getElementById("horaires");
+                            var bouton = document.getElementById('bouton-afficher');
+                            if (horaires.style.display === 'none') {
+                                horaires.style.display = 'block';
+                                bouton.textContent = 'Réduire';
+                            } else {
+                                horaires.style.display = 'none';
+                                bouton.textContent = 'Tout afficher';
+                            }
+                        }
+                        </script>
+                        <button aria-expanded="false" id="bouton-afficher" onclick="toggleHoraires()" style="color:#FF416C;">Tout afficher</button>
                     </nav>  
                 </div>
             </div>    
             <div class="sub-filter">
                 <h4>École</h4>
                 <div class="checkbox-container">
-                    <label><input type="checkbox" name="ecole" value="Polytech"> Polytech</label>
-                    <label><input type="checkbox" name="ecole" value="Centrale"> Centrale</label>
-                    <label><input type="checkbox" name="ecole" value="ENS"> L'ENS</label>
-                    <label><input type="checkbox" name="ecole" value="Universite Paris-Saclay"> Université Paris-Saclay</label>
+                @foreach($departements as $departement)
+                    @if ($loop->iteration <= 2)
+                        <label><input type="checkbox" name="ecole" value="{{$departement->name}}"> {{$departement->name}} </label>
+                    @else
+                        <div id="departement{{$loop->iteration}}" style="display:none; ">
+                            <label><input type="checkbox" name="ecole" value="{{$departement->name}}"> {{$departement->name}} </label>  
+                        </div>                        
+                    @endif
+                @endforeach
+
+                <script>
+                    function toggleDep() {
+                        var dep = document.getElementById("departement3");
+                        var bouton = document.getElementById('bouton-afficher-dep');
+                        var etat = true;
+                        if (dep.style.display === 'none') {
+                            etat = true;
+                            bouton.textContent = 'Réduire';
+                        } else {
+                            etat = false;
+                            bouton.textContent = 'Tout afficher';
+                        }
+                        
+                        for (var i = 3; i <= 15; i++) {
+                            if (etat == true) {
+                                document.getElementById("departement"+i).style.display = 'block';
+                            } else {
+                                document.getElementById("departement"+i).style.display = 'none';
+                            }
+                        }   
+                    }
+                </script>
+                <button aria-expanded="false" id="bouton-afficher-dep" onclick="toggleDep()" style="color:#FF416C;">Tout afficher</button>
                 </div>
             </div>
             <div class="sub-filter">
