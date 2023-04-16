@@ -4,7 +4,7 @@
 
 @vite('resources/css/app.css')
 <div class="card" id="add_annonce">
-   
+    <link rel="stylesheet" href="{{asset("admin_assets/assets/css/creerannonce.css")}}" />
     <div class="card-header mt-5">
         <div class="card-title">Ajouter une annonce</div>
        

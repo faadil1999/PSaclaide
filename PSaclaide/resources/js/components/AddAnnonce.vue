@@ -92,79 +92,74 @@ onMounted(() =>
 
 <template>
     <div>
-        <form v-if="isFormateur" @submit.prevent="addAnnonce()">
+      
         
-            <div class="card-body">  
-               
-                <div class="form-check">
-                    <label>Type d'annonce</label><br/>
-                   
-                    <!-- <p v-for="matiere in matieres" :key="matiere.id" >{{ matiere }}</p> -->
-                    <label class="form-radio-label">
-                        <input class="form-radio-input" type="radio" v-model="is_collectif"  name="optionsRadios" :value="false">
-                        <span class="form-radio-sign">Individuel</span>
-                    </label>
-                    <label class="form-radio-label ml-3">
-                        <input class="form-radio-input" type="radio" v-model="is_collectif"  name="optionsRadios" :value="true">
-                        <span class="form-radio-sign">Collectif</span>
-                    </label>
-                </div>
-                <div class="form-group">
-                    <label for="email">Titre</label>
-                    <input type="text" class="form-control" v-model="title" name="title"   placeholder="Entrer le titre">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-               
-                <div v-if="is_collectif" class="form-group">
-                    <label for="email">Nombre max participant</label>
-                    <input type="number" class="form-control"  name="participant_max" v-model="nbr_participant"  placeholder="Nombre de participant">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div v-else  class="form-group">
-                    <small id="emailHelp" class="form-text text-muted">Une annonce individuel se passe avec une seule personne</small>
-                </div>
-                <div  class="form-group">
-                    <label for="email">Location</label>
-                    <input type="text" class="form-control"  name="location" v-model="location"  placeholder="Lieu de deroulement">
-                    <small id="emailHelp" class="form-text text-muted">Ex: Bat620 B120 ,Bat 640 E13.. </small>
-                </div>
-                
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Matières</label>
-                        <select class="form-control" name="matiere" v-on:change="onChange($event)">   
-                            <option  v-for="matiere in matieres" :key="matiere.id" :value="matiere.id">{{ matiere['name'] }}</option>
-                        </select> 
+        <div id="containercreerannonce" class="container">
+					<h1 id="h1creerannonce">Publier une annonce de cours</h1>
+					<form id="annonce-form" v-if="isFormateur" @submit.prevent="addAnnonce()">
+						<div class="form-group">
+                            <label for="exampleFormControlSelect1">Matières</label>
+                            <select class="form-control" name="matiere" v-on:change="onChange($event)">   
+                                <option  v-for="matiere in matieres" :key="matiere.id" :value="matiere.id">{{ matiere['name'] }}</option>
+                            </select> 
+						</div>
+						<div class="form-group">
+                            <label for="exampleFormControlSelect1">Sous-Matières</label>
+                            <select class="form-control" name="sousMatiere" v-on:change="onChangeSM($event)">   
+                                <option  v-for="sousMatiere in sousMatieres" :key="sousMatiere.id" :value="sousMatiere.id">{{ sousMatiere['name'] }}</option>
+                            </select> 
+						</div>
+						<div class="form-group">
+							<label for="title">Titre de l'annonce</label>
+                            <input type="text" class="form-control" v-model="title" name="title"   placeholder="Entrer le titre">
+						</div>
+						<div class="form-group">
+							<label for="descriptif">Description du cours</label>
+							<textarea id="descriptif" v-model="description" name="description" class="form-control" placeholder="Entrez plus de précision sur votre cours si vous le désirez."></textarea>
+						</div>
+						<div class="form-group">
+							<label for="departement">Lieu du cours</label>
+                            <input type="text" class="form-control"  name="location" v-model="location"  placeholder="Lieu de deroulement">
+                            <small id="emailHelp" class="form-text text-muted">Ex: Bat620 B120 ,Bat 640 E13.. </small>
+						</div>
+						<div class="form-group">
+							<label for="date">Date</label>
+							<input type="date"  v-model="date" id="date" name="date" required />
+						</div>
+						<div>
+							<label for="heure">Heure du cours</label>
+							<input type="time" v-model="horaire" id="heure" name="heure" required/>
+							<br>
+							<br>
+						</div>
+						<div class="form-group">
+							<label for="nombre-eleves">Nombre d'élèves désiré</label>
+							<div class="radio-buttons">
+                                <input class="form-radio-input" type="radio" v-model="is_collectif"  name="optionsRadios" :value="false">
+								<b for="choiceunique">Un seul élève (Individuel)</b>
+							</div>
+							<div class="radio-buttons">
+								<input class="form-radio-input" type="radio" v-model="is_collectif"  name="optionsRadios" :value="true">
+								<b for="choicemultiple">Plusieurs élèves (Collectif)</b>
+							</div>
+							<div class="nbeleve" v-if="is_collectif">
+								<br>
+                                <label for="email">Nombre max participant</label>
+                                <input type="number" class="form-control"  name="participant_max" v-model="nbr_participant"  placeholder="Nombre de participant">
+							</div>
+							<br>
+							<br>
+							<div class="radio-button">
+								<button type="submit">Publier</button>
+								<!-- <button type="reset">Réinitialiser</button> -->
+							</div>
+						</div>
+					</form>
+                    <div v-else>
+                        <h3>Vous devez mettre votre statut sur formateur !!</h3>
+                    </div>
+				</div>
 
-                    <label for="exampleFormControlSelect1">Sous-Matières</label>
-                        <select class="form-control" name="sousMatiere" v-on:change="onChangeSM($event)">   
-                            <option  v-for="sousMatiere in sousMatieres" :key="sousMatiere.id" :value="sousMatiere.id">{{ sousMatiere['name'] }}</option>
-                        </select> 
-                </div>
-
-                
-                <div class="form-group">
-                        <label for="date">Date:</label>
-                        <input type="date" v-model="date" id="date" name="date">
-                
-                        <label for="time">Horaire:</label>
-                        <input type="time" v-model="horaire" id="time" name="time">
-                </div>
-       
-                <div class="form-group">
-                    <label for="comment">Description</label>
-                    <textarea class="form-control" id="desc" type="textarea" v-model="description" name="description" rows="5">
-
-                    </textarea>
-                </div> 
-             
-                <div class="card-action">
-                    <button class="btn btn-success" type="submit" >Submit</button>
-                    <button class="btn btn-danger">Cancel</button>
-                </div> 
-            </div>
-        </form>
-        <div v-else>
-            <h3>Vous devez mettre votre statut sur formateur !!</h3>
-        </div>
     </div>
 </template>
+
