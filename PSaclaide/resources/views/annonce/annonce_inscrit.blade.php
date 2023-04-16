@@ -78,89 +78,33 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <span>Cours de mathématiques</span>
-                            <span>Algèbre linéaire</span>
+                            <span>{{$annonce->title}}</span>
+                            
                         </h5>
                         <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élève : Hugues Martin</span><br>
-                            <span>Salle : B120 Polytech</span>
+                            <span>Formateur : {{$annonce->user->first_name}}</span><br>
+                            <span>Salle : {{ $annonce->location }}</span>
                         </h6>
                         <p class="card-text">
-                            Durée du cours : 2h30<br>
-                            horaires : 14h30-17h<br>
-                            Jour : 14/05
+                            
+                            horaires : {{$annonce->heure}}<br>
+                            Jour : {{$annonce->date}}<br>
+                            Matiere: {{$annonce->matiere->name}}<br>
+                            Sous matiere: @foreach ($annonce->sousMatieres  as $item)
+                                <span>{{ $item->name }}</span>
+                            @endforeach 
                         </p>
                         @if ($annonce->isIndividual)
-                        <td><span class="badge badge-success">Individuel</span></td>                                
-                    @else
-                        <td><span class="badge badge-info">Collectif</span></td>
-                    @endif
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
+                            <td><span class="badge badge-success">Individuel</span></td>                                
+                        @else
+                            <td><span class="badge badge-info">Collectif</span></td>
+                        @endif <br>
+                        <button class="btn btn-primary" href="#" role="button">Annuler</button>
                     </div>
                 </div>
             </div>	
             @endforeach
         
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span>Cours de mathématiques</span>
-                            <span>Dérivés</span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élève : Mathis Chevalier</span><br>
-                            <span>Salle à définir</span>
-                        </h6>
-                        <p class="card-text">
-                            Durée du cours : 1h<br>
-                            horaires : 10h-11h<br>
-                            Jour : 14/05
-                        </p>
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span>Cours de Physique</span>
-                            <span>Thermodynamique</span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élèves : Doballah Mehdi; Amrouche Mourad</span><br>
-                            <span>Salle : Hall central</span>
-                        </h6>
-                        <p class="card-text">
-                            Durée du cours : 1h30<br>
-                            horaires : 18h-19h30<br>
-                            Jour : 14/05
-                        </p>
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <span>Cours de Physique</span>
-                            <span>Thermodynamique</span>
-                        </h5>
-                        <h6 class="card-subtitle mb-2 text-muted">
-                            <span>élèves : Doballah Mehdi; Amrouche Mourad</span><br>
-                            <span>Salle : Hall centrale</span>
-                        </h6>
-                        <p class="card-text">
-                            Durée du cours : 1h30<br>
-                            horaires : 13h30-15h<br>
-                            Jour : 14/05
-                        </p>
-                        <button class="btn btn-default" href="#" role="button">Annuler</button>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 @endsection
