@@ -120,6 +120,7 @@ button:focus {
 .radio-button {
     transform: translateX(10px);
 }
+
 #logout i {
     margin-right: 5px;
 }

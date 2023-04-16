@@ -12,11 +12,14 @@
         <h2>Complétez votre profil afin de finaliser votre inscription</h2>
         <form method="POST" action="{{route('completerProfil')}}">
         @csrf
-            <input type="text" placeholder="Nom" name="prenom" required />
-            <input type="text" placeholder="Prénom" name="nomFamille" required />
+            <label id="categorie" for="prenom">Prénom : </label>
+            <input type="text" placeholder="Votre Prénom" name="prenom" required />
+            <label id="categorie" for="nom">Nom : </label>
+            <input type="text" placeholder="Votre Nom" name="nomFamille" required />
             <div>
-                <label for="departement">Departement</label>
-                <select name="departement">
+                <label id="categorie" for="departement">Département : </label>
+                <select name="departement" required>
+                    <option value="" disabled selected>Département</option>
                 @foreach ($departements as $departement)
                     <option value="{{ $departement->name }}">{{ $departement->name }}</option>
                 @endforeach
@@ -24,8 +27,9 @@
             </div>
         
             <div>
-                <label for="anneeEtude">Année d'étude</label>
-                <select name="anneeEtude">
+                <label id="categorie" for="anneeEtude">Année d'étude :</label>
+                <select name="anneeEtude" required>
+                    <option value="" disabled selected>Année d'étude</option>
                 @for($i = 1; $i < 6; $i++)
                     <option value="{{ $i }}">{{ $i }}</option>
                 @endfor

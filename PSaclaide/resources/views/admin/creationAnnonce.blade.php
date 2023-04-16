@@ -1,14 +1,14 @@
 @extends('layouts.web')
 @section("main")
 
-
 @vite('resources/css/app.css')
 <div class="card" id="add_annonce">
+
     <link rel="stylesheet" href="{{asset("admin_assets/assets/css/creerannonce.css")}}" />
-    <div class="card-header mt-5">
-        <div class="card-title">Ajouter une annonce</div>
-       
+    <div class="card-header">
+        <div class="card-title">Créer une annonce</div>
     </div>
+        
     <add-annonce :user_auth="{{Auth::user()}}" :formateur_id="{{Auth::user()->formateur->id}}"> </add-annonce> 
     {{-- <ajout-annonce></ajout-annonce> --}}
     {{-- <form method="POST" action="{{ route('storeAnnonce') }}">
@@ -27,13 +27,13 @@
             </div> --}}
         {{-- <div class="form-group">
             <label for="email">Titre</label>
-            <input type="text" class="form-control"  name="title"   placeholder="Entrer le titre">
+            <input type="text" class="form-control"  name="title"   placehold-er="Entrer le titre">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         --}}
         {{-- <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" id="password" place-holder="Password">
         </div>
         <div class="form-group form-inline">
             <label for="inlineinput" class="col-md-3 col-form-label">Inline Input</label>
@@ -52,7 +52,7 @@
         </div> --}}
         {{-- <div class="form-group">
             <label for="disableinput">Disable Input</label>
-            <input type="text" class="form-control" id="disableinput" placeholder="Enter Input" disabled>
+            <input type="text" class="form-control" id="disableinput" place-holder="Enter Input" disabled>
         </div> --}}
       
         {{-- <div class="form-group"> --}}
@@ -77,7 +77,7 @@
                 <input type="time" id="time" name="time">
             </div> --}}
             {{-- <div class="form-group">
-                <label for="exampleFormControlFile1">Example file input</label>
+                <label for="exampleFormControlFile1">Example file in-put</label>
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
             </div> --}}
             {{-- <div class="form-group">
@@ -89,7 +89,7 @@
             {{-- <div class="form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" type="checkbox" value="">
-                    <span class="form-check-sign">Agree with terms and conditions</span>
+                    <span class="form-check-sign">Agree with terms and condi-tions</span>
                 </label>
             </div> --}}
         {{-- </div>

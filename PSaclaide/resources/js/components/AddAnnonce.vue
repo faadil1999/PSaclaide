@@ -6,7 +6,7 @@ const matieres = ref( null )
 const sousMatieres = ref( null )
 const location = ref( null )
 const title = ref( "" )
-const nbr_participant = ref( 1 )
+const nbr_participant = ref( 2 )
 var matiere_id = 1
 var sousMatiere_id = 1
 const description = ref( null )
@@ -111,7 +111,7 @@ onMounted(() =>
 						</div>
 						<div class="form-group">
 							<label for="title">Titre de l'annonce</label>
-                            <input type="text" class="form-control" v-model="title" name="title"   placeholder="Entrer le titre">
+                            <input type="text" class="form-control" v-model="title" name="title" placeholder="Entrer le titre" required>
 						</div>
 						<div class="form-group">
 							<label for="descriptif">Description du cours</label>
@@ -119,17 +119,20 @@ onMounted(() =>
 						</div>
 						<div class="form-group">
 							<label for="departement">Lieu du cours</label>
-                            <input type="text" class="form-control"  name="location" v-model="location"  placeholder="Lieu de deroulement">
-                            <small id="emailHelp" class="form-text text-muted">Ex: Bat620 B120 ,Bat 640 E13.. </small>
+                            <input type="text" class="form-control"  name="location" v-model="location"  placeholder="Lieu de deroulement" required>
+                            <small id="emailHelp" class="form-text text-muted" style="color:black !important;">Ex :  Bat 620 B120, Bat 640 E13... </small>
 						</div>
 						<div class="form-group">
 							<label for="date">Date</label>
-							<input type="date"  v-model="date" id="date" name="date" required />
+							<input type="date" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" v-model="date" id="date" name="date" required>
 						</div>
 						<div>
 							<label for="heure">Heure du cours</label>
-							<input type="time" v-model="horaire" id="heure" name="heure" required/>
-							<br>
+                            <!--s step = 900 -> 900 secondes soit 15 minutes -->
+                            <input type="time" step="900" min="07:00:00" max="23:00:00" v-model="horaire" id="time" name="time" required>
+							<small id="dateHelp" class="form-text text-muted" style="color:black !important;">Un cours doit être créé au minimum un jour avant son déroulement. </small>
+                            <small id="dateHelp" class="form-text text-muted" style="color:black !important;">Un cours dure une heure et se déroule entre 7h et 23h. Les horaires de cours sont 0, 15, 30 et 45.</small>
+
 							<br>
 						</div>
 						<div class="form-group">
@@ -145,7 +148,7 @@ onMounted(() =>
 							<div class="nbeleve" v-if="is_collectif">
 								<br>
                                 <label for="email">Nombre max participant</label>
-                                <input type="number" class="form-control"  name="participant_max" v-model="nbr_participant"  placeholder="Nombre de participant">
+                                <input type="number" class="form-control"  name="participant_max" v-model="nbr_participant"  placeholder="Nombre de participant" min="2">>
 							</div>
 							<br>
 							<br>
@@ -156,7 +159,7 @@ onMounted(() =>
 						</div>
 					</form>
                     <div v-else>
-                        <h3>Vous devez mettre votre statut sur formateur !!</h3>
+                        <h4>Vous devez activer votre mode professeur pour pouvoir créer une annonce !</h4>
                     </div>
 				</div>
 

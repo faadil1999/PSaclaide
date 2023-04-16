@@ -120,6 +120,11 @@ button:focus {
 .radio-button {
     transform: translateX(10px);
 }
+
+input[type="radio"]:checked + span {
+    color: blue;
+  }
+
 #logout i {
     margin-right: 5px;
 }
@@ -193,13 +198,10 @@ label {
     
 input[type="text"],
 input[type="number"],
-
 input[type="datetime-local"] {
     background-color: #fff;
     border: none;
     border-radius: 5px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
     color: #666;
     font-size: 16px;
     padding: 10px;

@@ -30,12 +30,12 @@ const toggle = async(e) => {
     await putState(e);
    
     if(isFormateur.value == true){
-        actvProf.value = "Activé"
+        actvProf.value = "activé"
         actvStud.value = ""
     }else
     {
         actvProf.value = ""
-        actvStud.value = "Activé"
+        actvStud.value = "activé"
     }
     console.log(`toogle ${isFormateur.value}`);
    emitter.emit('changeState',isFormateur.value);
@@ -45,12 +45,12 @@ const toggle = async(e) => {
 onBeforeMount( async()=>{
    await getState();
    if(isFormateur.value == true){
-        actvProf.value = "Activé"
+        actvProf.value = "activé"
         actvStud.value = ""
     }else
     {
         actvProf.value = ""
-        actvStud.value = "Activé"
+        actvStud.value = "activé"
     }
     emitter.emit('changeState',isFormateur.value);
     

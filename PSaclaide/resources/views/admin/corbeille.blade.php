@@ -4,12 +4,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <div class="card-title">Corbeille</div>
+                    <div class="card-title">Ma Corbeille</div>
                 </div>
                 <div class="card-body">
-                    <div class="card-sub">
-                       Voici la liste des cours dans la corbeille
-                    </div>
                     <table class="table mt-3">
                         <thead>
                             <tr>

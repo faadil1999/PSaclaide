@@ -7,9 +7,6 @@
                     <div class="card-title">Mes annonces</div>
                 </div>
                 <div class="card-body">
-                    <div class="card-sub">
-                       Voici la liste de mes annonces
-                    </div>
                     <table class="table mt-3">
                         <thead>
                             <tr>
