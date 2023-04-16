@@ -1,8 +1,7 @@
 @extends('layouts.web')
 @section('main')
-    <div id="main-content" class="container mt-5 ">
-        <h1>Mes annonces de cours :</h1>
         <div class="row">
+        <h1>Mes annonces de cours :</h1>
             @foreach ($annonces as $annonce)
             <div class="col-sm-4">
                 <div class="card">
@@ -44,5 +43,4 @@
             @endforeach
         
         </div>
-    </div>
 @endsection
