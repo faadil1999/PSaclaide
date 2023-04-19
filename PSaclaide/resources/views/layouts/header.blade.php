@@ -119,11 +119,50 @@
                     <button form="" aria-expanded="false" id="bouton-afficher-dep" onclick="toggleDep()" style="color:#FF416C;">Tout afficher</button>
                     </div>
                 </div>
+
+                <div class="sub-filter">
+                    <h4>Matière</h4>
+                    <div class="checkbox-container">
+                    @foreach($matieres as $matiere)
+                        @if ($loop->iteration <= 2)
+                            <label><input type="checkbox" name="matiere[]" value="{{$matiere->name}}"> {{$matiere->name}} </label>
+                        @else
+                            <div id="matiere{{$loop->iteration}}" style="display:none; ">
+                                <label><input type="checkbox" name="matiere[]" value="{{$matiere->name}}"> {{$matiere->name}} </label>  
+                            </div>                        
+                        @endif
+                    @endforeach
+
+                    <script>
+                        function toggleMap() {
+                            var mat = document.getElementById("matiere3");
+                            var bouton = document.getElementById('bouton-afficher-dep');
+                            var etat = true;
+                            if (mat.style.display === 'none') {
+                                etat = true;
+                                bouton.textContent = 'Réduire';
+                            } else {
+                                etat = false;
+                                bouton.textContent = 'Tout afficher';
+                            }
+                            
+                            for (var i = 3; i <= 25; i++) {
+                                if (etat == true) {
+                                    document.getElementById("matiere"+i).style.display = 'block';
+                                } else {
+                                    document.getElementById("matiere"+i).style.display = 'none';
+                                }
+                            }   
+                        }
+                    </script>
+                    <button form="" aria-expanded="false" id="bouton-afficher-dep" onclick="toggleMap()" style="color:#FF416C;">Tout afficher</button>
+                    </div>
+                </div>
                 <div class="sub-filter" style="margin-bottom:10px;">
                     <h4>Type de cours</h4>
                     <div class="checkbox-container">
                         <label><input type="checkbox" name="type[]" value="Individuel" <?php if(isset($_POST['type']) && in_array('Individuel', $_POST['type'])) echo 'checked'; ?>> Individuel</label>
-                        <label><input type="checkbox" name="type[]" value="Collectif"  <?php if(isset($_POST['type']) && in_array('Collectif',  $_POST['type'])) echo 'checked'; ?>> Collectif</label>
+                        <label><input type="checkbox" name="type[]" value="Collectif"  <?php if(isset($_POST['type']) && in_array('Collectif',  $_POST['type'])) echo 'checked'; ?>> Collectif </label>
                     </div>
                 </div>            
 

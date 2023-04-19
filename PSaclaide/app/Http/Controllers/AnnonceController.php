@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Annonce;
+use App\Models\Matiere;
 use App\Models\Departement;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Collection;
@@ -13,6 +14,7 @@ class AnnonceController extends Controller
     public function filtreAnnonce(Request $request){
         $annonces = Annonce::where('isAvailable', 1)->get();
         $departements = Departement::all();
+        $matieres = Matiere::all();
 
         /*$heures = $request->input('horaire');
         if(isset($heures)) {
@@ -50,31 +52,25 @@ class AnnonceController extends Controller
         else{}
         dd($annonces);*/
 
-        $types = $request->input('type');      
+        $types = $request->input('type');  
         if(isset($types)) {
             if(count($types) == 1){
-                $annoncesFiltres = new COllection();
                 if($types[0] == "Individuel"){
-                    foreach ($annonces as $annonce) {
-                        if ($annonce->isIndividual == 1) {
-                            $annoncesFiltres->push($annonce);
-                        } 
-                    }
+                    $annonces = $annonces->filter(function ($annonce) {
+                        return $annonce->isIndividual == 1;
+                    });
                 }
                 else{
-                    foreach ($annonces as $annonce) {
-                        if ($annonce->isIndividual == 1) {
-                            $annoncesFiltres->push($annonce);
-                        } 
-                    }
+                    $annonces = $annonces->filter(function ($annonce) {
+                        return $annonce->isIndividual == 0;
+                    });
                 }
-                $annonces = $annoncesFiltres;
             }
         }
         else{}
 
       
-        return view('admin.annonce',['user' => auth()->user(), 'annonces' => $annonces, 'departements' => $departements]);
+        return view('admin.annonce',['user' => auth()->user(), 'annonces' => $annonces, 'departements' => $departements, 'matieres' => $matieres]);
     }
 
     public function details($id)

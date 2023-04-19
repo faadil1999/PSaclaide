@@ -174,8 +174,9 @@ class AdminController extends Controller
     {
         $annonces = Annonce::where('isAvailable', 1)->get();
         $departements = Departement::all();
+        $matieres = Matiere::all();
       
-        return view('admin.annonce',['user' => auth()->user(), 'annonces' => $annonces, 'departements' => $departements]);
+        return view('admin.annonce',['user' => auth()->user(), 'annonces' => $annonces, 'departements' => $departements, 'matieres' => $matieres]);
     }
 
     public function annonce()
