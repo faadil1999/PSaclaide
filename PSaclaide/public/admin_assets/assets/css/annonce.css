@@ -53,6 +53,8 @@ button {
     font-size: 16px;
     margin: 20px 0;
     padding: 10px 20px;
+    display: block;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -384,7 +386,6 @@ input[type="checkbox"]:checked::after {
 /* Le reste du CSS reste inchangé */
 
 .result-card {
-    
     display: flex;
     border: 3px solid #FF416C;
     flex-direction: column;
@@ -397,6 +398,8 @@ input[type="checkbox"]:checked::after {
     text-align: center;
     transition: transform 0.3s;
     width: calc(33% - 10px); /* Largeur ajustée pour afficher 3 cartes par ligne */
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .image-container {

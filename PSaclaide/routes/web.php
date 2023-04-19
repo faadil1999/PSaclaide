@@ -38,6 +38,7 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     })->name("home");
     
     Route::get('/annonce', [AdminController::class, 'listeAnnonce'])->name('listeAnnonce');
+    Route::post('/annonce',   [AnnonceController::class, 'filtreAnnonce'])->name('filtreAnnonce');
 
     Route::get('/cours/inscrit',[StudentController::class ,'cours_inscrits'])->name('cours_inscrit');
     Route::get('/mesannonces',[AdminController::class,'mesannonces'])->name('mesannonces');
@@ -57,6 +58,7 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::get('/option',    [AdminController::class, 'option'])->name('option');
     Route::post('/option',   [AdminController::class, 'updatePassword'])->name('modifierPassword');
     Route::post('/optionTeacher',   [AdminController::class, 'newTeacher'])->name('devenirProfesseur');
+
 });
 
 Route::get('/profil',    [AdminController::class, 'profil'])->name('profil');

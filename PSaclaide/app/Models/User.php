@@ -28,7 +28,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'speciality',
         'isTeacher',
         'departement_id',
-        'currentState'
+        'currentState',
+        'stateUser'
     ];
 
     protected $attributes = [
@@ -43,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'sumGrades' => 0,
         'avgGrades' => 0,
         'balance'   => 0,
-        'departement_id' => null
+        'departement_id' => null,
     ];
 
     /**

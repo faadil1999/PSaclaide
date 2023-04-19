@@ -19,9 +19,15 @@
           @foreach ($annonces as $annonce)
           @if ($annonce->author != Auth::user()->email)
           <div class="result-card col-md-4 mb-4">
-            <div class="card h-100"><img class="card-img-top w-100" src="assets/img/departement/{{$annonce->user->departement->picture}}" alt="courses" />
+            <div class="card h-100" style="position:relative;">
+              <img class="card-img-top w-100" src="assets/img/departement/{{$annonce->user->departement->picture}}" style="height:150px;" alt="courses" />
+              @if ($annonce->isIndividual == 1)
+                <div style="position:absolute; top:55%; left:50%; transform:translate(-50%,-50%); color:green;">Individuel</div>
+              @else  
+                <div style="position:absolute; top:55%; left:50%; transform:translate(-50%,-50%); color:blue;">Collectif</div>
+              @endif
               <div class="card-body">
-                <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">{{ $annonce->title }}</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
+                <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">{{ $annonce->title }}</h5><a class="text-muted fs--1 stretched-link text-decoration-none" >{{ $annonce->matiere->name }}</a>
                 @if ($annonce->isAmongStudent(Auth::user()->student->id))
                 <button type="text" class="btn btn-warning">Deja inscrit</button>
                 @else
@@ -39,20 +45,6 @@
 
           @endforeach
 
-          <div class="result-card col-md-4 mb-4">
-            <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/critical-thinking.png" alt="courses" />
-              <div class="card-body">
-                <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Introduction to Logic and Critical Thinking</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">Duke University</a>
-              </div>
-            </div>
-          </div>
-          <div class="result-card col-md-4 mb-4">
-            <div class="card h-100"><img class="card-img-top w-100" src="assets/img/gallery/art-design.png" alt="courses" />
-              <div class="card-body">
-                <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">Modern and Contemporary Art and Design</h5><a class="text-muted fs--1 stretched-link text-decoration-none" href="#!">The Museum of Modern Art</a>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       {{--
