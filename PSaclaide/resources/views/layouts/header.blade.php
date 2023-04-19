@@ -28,7 +28,7 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                       <a class="dropdown-item" href="/home">Tableau de bord</a>
-                      <a class="dropdown-item" href="#">Déconnexion</a>                      
+                      <a href="auth-normal-sign-in.html" onclick="event.preventDefault(); document.getElementById('form_logout').submit()">Déconnexion</a>                      
                     </div>
                   </div>
                 </div>
@@ -42,7 +42,8 @@
     <div class="main-container"  id="admin_management">
         
         <div class="filters-container">
-            <form method="POST" action="{{ route('devenirProfesseur') }}">
+            <form method="POST" action="{{ route('filtreAnnonce') }}">
+                @csrf
                 <h3>Filtres</h3>
                     
                 <div class="sub-filter">
@@ -51,15 +52,15 @@
                         <input type="date" name="data[]" id="dateselect">   
                     </div>
                     <br>
-                    <h4>Horaire</h4>
+                    <h4>Heure</h4>
                     <div class="checkbox-container">
-                        <label><input type="checkbox" name="horaire" id="8" value="8"> 8h00 - 9h00</label>
-                        <label><input type="checkbox" name="horaire" id="8"value="9"> 9h00 - 10h00</label>
+                        <label><input type="checkbox" name="horaire[]" id="8" value="8"> 8h00 - 9h00</label>
+                        <label><input type="checkbox" name="horaire[]" id="8"value="9"> 9h00 - 10h00</label>
                         <nav id="filtresheure">
                             
                             <div id="horaires" style="display:none;">
                                 @for ($i = 10; $i < 24; $i++)
-                                    <label><input type="checkbox" name="horaire" value="{{$i}}"> {{$i}}h00 - {{$i+1}}h00</label>
+                                    <label><input type="checkbox" name="horaire[]" value="{{$i}}"> {{$i}}h00 - {{$i+1}}h00</label>
                                 @endfor
                             </div>
 
@@ -76,7 +77,7 @@
                                 }
                             }
                             </script>
-                            <button aria-expanded="false" id="bouton-afficher" onclick="toggleHoraires()" style="color:#FF416C;">Tout afficher</button>
+                            <button form="" aria-expanded="false" id="bouton-afficher" onclick="toggleHoraires()" style="color:#FF416C;">Tout afficher</button>
                         </nav>  
                     </div>
                 </div>    
@@ -85,10 +86,10 @@
                     <div class="checkbox-container">
                     @foreach($departements as $departement)
                         @if ($loop->iteration <= 2)
-                            <label><input type="checkbox" name="ecole" value="{{$departement->name}}"> {{$departement->name}} </label>
+                            <label><input type="checkbox" name="ecole[]" value="{{$departement->name}}"> {{$departement->name}} </label>
                         @else
                             <div id="departement{{$loop->iteration}}" style="display:none; ">
-                                <label><input type="checkbox" name="ecole" value="{{$departement->name}}"> {{$departement->name}} </label>  
+                                <label><input type="checkbox" name="ecole[]" value="{{$departement->name}}"> {{$departement->name}} </label>  
                             </div>                        
                         @endif
                     @endforeach
@@ -115,14 +116,14 @@
                             }   
                         }
                     </script>
-                    <button aria-expanded="false" id="bouton-afficher-dep" onclick="toggleDep()" style="color:#FF416C;">Tout afficher</button>
+                    <button form="" aria-expanded="false" id="bouton-afficher-dep" onclick="toggleDep()" style="color:#FF416C;">Tout afficher</button>
                     </div>
                 </div>
-                <div class="sub-filter">
+                <div class="sub-filter" style="margin-bottom:10px;">
                     <h4>Type de cours</h4>
                     <div class="checkbox-container">
-                        <label><input type="checkbox" name="type" value="Individuel"> Individuel</label>
-                        <label><input type="checkbox" name="type" value="Collectif"> Collectif</label>
+                        <label><input type="checkbox" name="type[]" value="Individuel" <?php if(isset($_POST['type']) && in_array('Individuel', $_POST['type'])) echo 'checked'; ?>> Individuel</label>
+                        <label><input type="checkbox" name="type[]" value="Collectif"  <?php if(isset($_POST['type']) && in_array('Collectif',  $_POST['type'])) echo 'checked'; ?>> Collectif</label>
                     </div>
                 </div>            
 

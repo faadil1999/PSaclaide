@@ -148,7 +148,7 @@ onMounted(() =>
 							<div class="nbeleve" v-if="is_collectif">
 								<br>
                                 <label for="email">Nombre max participant</label>
-                                <input type="number" class="form-control"  name="participant_max" v-model="nbr_participant"  placeholder="Nombre de participant" min="2">>
+                                <input type="number" class="form-control"  name="participant_max" v-model="nbr_participant"  placeholder="Nombre de participant" min="2">
 							</div>
 							<br>
 							<br>

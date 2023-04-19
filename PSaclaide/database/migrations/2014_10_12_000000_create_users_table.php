@@ -30,6 +30,7 @@ return new class extends Migration
             $table->float('avgGrades')->nullable();
             $table->float('balance')->nullable();
             $table->boolean('currentState')->default(false);
+            $table->boolean('stateUser')->default(true);
             $table->rememberToken();
             $table->timestamps();
             $table->foreignId('departement_id')->nullable()->constrained()->onDelete('cascade');

@@ -22,12 +22,12 @@ class StudentController extends Controller
                 $annonce->students()->save( Auth::user()->student);
             }else
             {
-                return redirect()->route('listeAnnonce')->with('error','Il ny a plus de place');
+                return redirect()->route('listeAnnonce')->with('error','Il n\'y a plus de place');
              
             }
         }else{
             if($annonce->AIndividuel->hasStudent()){
-                return redirect()->route('listeAnnonce')->with('error','Il ny a plus de place');
+                return redirect()->route('listeAnnonce')->with('error','Il n\'y a plus de place');
                 
             }
             else{

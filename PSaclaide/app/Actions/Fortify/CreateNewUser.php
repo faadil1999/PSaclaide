@@ -49,8 +49,6 @@ class CreateNewUser implements CreatesNewUsers
             'user_id' => $user->id
         ]);
 
-        Mail::to($input['email'])->send(new VerifMail());
-
         return $user;
     }
 }

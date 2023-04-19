@@ -109,12 +109,12 @@
 								</show-element>
                                     <div class="space"></div>
 								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="imgprofil" class="img-fluid" src="{{asset("admin_assets/assets/images/logopolytech.png")}}">Mehdi</a>
+									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img id="imgprofil" class="img-fluid" src="{{asset("admin_assets/assets/images/logopolytech.png")}}">{{Auth::user()->first_name}}</a>
 									<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-										<a class="dropdown-item" href="#">Profil</a>
+										<a class="dropdown-item" href="/home">Profil</a>
 										
-										<a class="dropdown-item" href="#">Déconnexion</a>
+										<a class="dropdown-item" href="auth-normal-sign-in.html" onclick="event.preventDefault(); document.getElementById('form_logout').submit()">Déconnexion</a>
 									</div>
 								</li>
 							</ul>
@@ -123,7 +123,7 @@
 				</nav>
 				@yield("main")
                
-                  </div>
+                </div>
 			</div>
 		
 	
