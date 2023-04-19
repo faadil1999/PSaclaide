@@ -19,10 +19,10 @@
            
 			<nav id="sidebar">
 				<div class="p-4 pt-5">
-					<a href="#" class="img logo rounded-circle mb-5" style="background-image: url({{asset("admin_assets/assets/images/logo.png")}});"></a>
+					<a href="{{ route('home')}}" class="img logo rounded-circle mb-5" style="background-image: url({{asset("admin_assets/assets/images/logo.png")}});"></a>
 					<ul class="list-unstyled components mb-5">
 						<li>
-							<a href="/home" data-toggle="collapse" aria-expanded="false" >Mon profil</a>
+							<a href="{{ route('option')}}">Mon profil</a>
 						</li>
                         <show-element>
                             <li>

@@ -14,10 +14,10 @@
                             <span>Emplacement : {{ $annonce->location }}</span>
                         </h6>
                         <p class="card-text">
-                            Jour: {{ date('d/m/Y', strtotime($annonce->date)) }}<br>
-                            Horaires: {{ substr($annonce->heure, 0, 5) }}<br>
-                            Matière: {{$annonce->matiere->name}}<br>
-                            Sous-matière: @foreach ($annonce->sousMatieres  as $item)
+                            Jour : {{ date('d/m/Y', strtotime($annonce->date)) }}<br>
+                            Horaires : {{ substr($annonce->heure, 0, 5) }}<br>
+                            Matière : {{$annonce->matiere->name}}<br>
+                            Sous-Matière : @foreach ($annonce->sousMatieres  as $item)
                                 <span>{{ $item->name }}</span>
                             @endforeach 
                         </p>
@@ -25,7 +25,7 @@
                             <td><span class="badge badge-success">Individuel</span></td>                                
                         @else
                             <td><span class="badge badge-info">Collectif</span></td>
-                        @endif <br>
+                        @endif
                         
                         <div class="button-container">
                             <form action="{{route("trash_annonce",["id"=>$annonce->id])}}" method="post">
@@ -34,7 +34,7 @@
                             </form>
                             <form action="{{route("details_cours_formateur",["id"=>$annonce->id])}}" method="get">
                                 @csrf
-                                <button type="submit" class="btn btn-primary">Détail</button>
+                                <button type="submit" class="btn btn-primary">Détails</button>
                             </form>
                         </div>
                     </div>

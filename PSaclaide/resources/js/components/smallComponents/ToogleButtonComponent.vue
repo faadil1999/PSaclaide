@@ -66,8 +66,8 @@ onBeforeMount( async()=>{
 
 <template>
     <div>
-        <button
         
+        <button
             class="btn-lg mb-4"
             @click="toggle(true)"
             :class="[isFormateur ? 'btn btn-warning' : 'btn btn-dark']"

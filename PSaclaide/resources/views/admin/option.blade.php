@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modifier les options</title>
-    <link rel="stylesheet" href="auth_assets/css/option.css">
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="/home">Accueil</a>
-            <a href="#">Options</a>
-        </nav>
-    </header>
+@extends('layouts.web')
+@section('main')
 
-    <main class="container">
+    <link rel="stylesheet" href="auth_assets/css/option.css">
+
         <section class="options-container">
             <h2>Modifier les options</h2>
             <form method="POST" action="{{ route('modifierPassword') }}">
@@ -72,6 +60,5 @@
             </form>
         </section>
         @endif
-    </main>
-</body>
-</html>
+    
+@endsection

@@ -1,8 +1,6 @@
 @extends('layouts.web')
 @section('main')
 
-@extends('layouts.web')
-@section('main')
         <div class="row">
         <h1>Ma corbeille</h1>
             @foreach ($annonces as $annonce)

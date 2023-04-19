@@ -53,12 +53,13 @@ Route::middleware('auth','verified','completed_profil')->group(function(){
     Route::post('trash_annonce/{id}',[AdminController::class,'trash_annonce'])->name("trash_annonce");
     Route::post('subscribe/{id}',[StudentController::class , 'subscribe'])->name('subscribe');
 
+    
+    Route::get('/option',    [AdminController::class, 'option'])->name('option');
+    Route::post('/option',   [AdminController::class, 'updatePassword'])->name('modifierPassword');
+    Route::post('/optionTeacher',   [AdminController::class, 'newTeacher'])->name('devenirProfesseur');
 });
 
 Route::get('/profil',    [AdminController::class, 'profil'])->name('profil');
 Route::post('/home',     [AdminController::class, 'updateProfil'])->name('completerProfil');
-Route::get('/option',    [AdminController::class, 'option'])->name('option');
-Route::post('/option',   [AdminController::class, 'updatePassword'])->name('modifierPassword');
-Route::post('/optionTeacher',   [AdminController::class, 'newTeacher'])->name('devenirProfesseur');
 Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::put('/cours/formateur/detail/{id}', [AnnonceController::class, 'updateAnnonce'])->name('modifierAnnonce');

@@ -44,6 +44,18 @@ button {
     transition: color 0.3s;
 }
 
+.confirm-button {
+    background-color: #FF416C;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px 0;
+    padding: 10px 20px;
+    text-align: center;
+}
+
 button:hover{
     cursor: pointer;
     color: black;
@@ -191,7 +203,6 @@ input#dateselect{
     background-color: #f6f5f7;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
     padding: 10px;
 }
 

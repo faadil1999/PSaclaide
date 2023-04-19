@@ -86,7 +86,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin-top: 0;
-  margin-bottom: 1rem; }
+  margin-bottom: 0.5rem; }
 
 abbr[title],
 abbr[data-original-title] {
@@ -2511,7 +2511,7 @@ fieldset:disabled a.btn {
 
 .btn-lg, .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.3rem; }
 
@@ -2723,8 +2723,10 @@ input[type="button"].btn-block {
   border-top: 1px solid #e9ecef; }
 
 .dropdown-item {
-  display: block;
-  width: 100%;
+  display: block; 
+  margin: 0 auto; 
+  text-align: center;
+  width: 130px;
   padding: 0.25rem 1.5rem;
   clear: both;
   font-weight: 400;
@@ -2732,7 +2734,9 @@ input[type="button"].btn-block {
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
-  border: 0; }
+  border: 1;
+  border-color: black;
+margin-bottom: 5px; }
   .dropdown-item:hover, .dropdown-item:focus {
     color: #16181b;
     text-decoration: none;
@@ -3839,7 +3843,7 @@ input[type="button"].btn-block {
   padding: 1.25rem; }
 
 .card-title {
-  margin-bottom: 0rem; 
+  margin-bottom: 1rem; 
   text-align: center; 
   font-weight: bold; 
   font-size: 2em;}
@@ -4128,7 +4132,6 @@ input[type="button"].btn-block {
   line-height: 1;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
   border-radius: 0.25rem;
   -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
@@ -4178,7 +4181,13 @@ input[type="button"].btn-block {
 
 .badge-success {
   color: #fff;
-  background-color: #28a745; }
+  background-color: #28a745;
+  display: flex;
+  /*display: block; 
+  margin: 0 auto; */
+  justify-content: center;
+  max-width: 90px;
+  margin-bottom: 15px;}
   a.badge-success:hover, a.badge-success:focus {
     color: #fff;
     background-color: #1e7e34; }
@@ -8321,6 +8330,9 @@ a[data-toggle="collapse"] {
   transition: all 0.3s; }
 
 .btn.btn-primary {
+  display: block; 
+  margin: 0 auto; 
+  text-align: center;
   background: #Ff416c;
   border-color: #Ff416c; }
 
