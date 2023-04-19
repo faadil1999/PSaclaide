@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::middleware('auth','verified')->group(function(){
+Route::middleware('auth','verified','banned_profil')->group(function(){
 
     Route::get('complete_profil',function(){
         $departements = Departement::All();
@@ -31,7 +31,18 @@ Route::middleware('auth','verified')->group(function(){
 
 });
 
-Route::middleware('auth','verified','completed_profil')->group(function(){
+Route::middleware('auth','verified')->group(function(){
+
+    Route::get('banned_profil',function(){
+       
+        return view ('auth.banned');
+    })->name("profil_banned");
+
+});
+
+
+
+Route::middleware('auth','verified','completed_profil','banned_profil')->group(function(){
    
     Route::get('home',function(){
         return view('admin.home');

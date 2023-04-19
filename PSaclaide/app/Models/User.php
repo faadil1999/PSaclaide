@@ -71,6 +71,12 @@ class User extends Authenticatable implements MustVerifyEmail
       return $this->last_name==null;
     }
 
+    public function imBanned()
+    {
+        
+        return $this->stateUser;
+    }
+
     public function annonces()
     {
         return $this->hasMany(Annonce::class);
