@@ -9,6 +9,7 @@ const isFormateur = ref( false );
 const actvProf = ref("Desactivé")
 const actvStud = ref("Activé")
 const emitter = inject('emitter');
+const isTeacher = ref( null );
 
 const getState = async () => {
     
@@ -24,6 +25,10 @@ const putState = async (e) => {
     console.log(response);
 }
 
+const showButtonteacher = () =>
+{
+    isTeacher.value = props.user_auth.isTeacher
+}
 
 const toggle = async(e) => {
 //    UserState.$emit('changeState',this.isFormateur) 
@@ -44,6 +49,7 @@ const toggle = async(e) => {
 
 onBeforeMount( async()=>{
    await getState();
+   showButtonteacher();
    if(isFormateur.value == true){
         actvProf.value = "activé"
         actvStud.value = ""
@@ -67,7 +73,7 @@ onBeforeMount( async()=>{
 <template>
     <div>
         
-        <button
+        <button  v-if="isTeacher"
             class="btn-lg mb-4"
             @click="toggle(true)"
             :class="[isFormateur ? 'btn btn-warning' : 'btn btn-dark']"
