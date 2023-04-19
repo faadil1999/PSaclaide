@@ -37,10 +37,12 @@ const toggle = async(e) => {
     if(isFormateur.value == true){
         actvProf.value = "activé"
         actvStud.value = ""
+        window.location.href = "http://127.0.0.1:8000/home"
     }else
     {
         actvProf.value = ""
         actvStud.value = "activé"
+        window.location.href = "http://127.0.0.1:8000/home"
     }
     console.log(`toogle ${isFormateur.value}`);
    emitter.emit('changeState',isFormateur.value);
