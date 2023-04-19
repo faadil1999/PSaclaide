@@ -103,6 +103,7 @@ class AdminController extends Controller
 
     public function newTeacher(Request $request)
     {
+       
         $user = User::find(auth()->user()->id); 
         if($request->prof == 'on'){
             $user->update([
@@ -113,7 +114,7 @@ class AdminController extends Controller
             ]);
         }
 
-        return view('admin.option', ['user' => $user]);
+        return redirect()->route('option')->with('status','Vous vous etes desormais formateur et etudiant');
     }
 
     public function profil()

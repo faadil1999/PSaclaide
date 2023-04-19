@@ -44,3 +44,7 @@ admin.component('show-element',ShowElement);
 admin.component('show-student-element', ShowStudentElement);
 
 admin.mount('#admin_management');
+
+
+
+

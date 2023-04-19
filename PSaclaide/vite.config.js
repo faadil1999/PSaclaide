@@ -6,7 +6,11 @@ export default defineConfig({
     plugins: [
         vue(),
         laravel({
-            input: ['resources/css/app.css', 'resources/js/app.js'],
+            input: ['resources/css/app.css', 
+            'resources/js/app.js',
+            '/public/admin_assets/assets/js/popper.js',
+            '/public/admin_assets/assets/js/main.js'
+        ],
             refresh: true,
         }),
     ],

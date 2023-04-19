@@ -2,7 +2,11 @@
 @section('main')
 
     <link rel="stylesheet" href="auth_assets/css/option.css">
-
+    @if (session('status'))
+    <div class="alert alert-success">
+      {{ session('status') }}
+    </div>
+    @endif
         <section class="options-container">
             <h2>Modifier les options</h2>
             <form method="POST" action="{{ route('modifierPassword') }}">

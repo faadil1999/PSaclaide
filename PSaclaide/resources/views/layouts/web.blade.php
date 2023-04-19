@@ -128,144 +128,16 @@
 		
 	
 
-@vite('resources/js/app.js')
+@vite(['resources/js/app.js','/public/admin_assets/assets/js/popper.js',
+'/public/admin_assets/assets/js/main.js'])
 <script src="{{asset("admin_assets/assets/js/jquery.min.js")}}"></script>
 <script src="{{asset("admin_assets/assets/js/popper.js")}}"></script>
 <script src="{{asset("admin_assets/assets/js/bootstrap.min.js")}}"></script>
 <script src="{{asset("admin_assets/assets/js/main.js")}}"></script>
 <script src="{{asset("admin_assets/assets/js/index.js")}}"></script>
+
+
 </body>
 </html>
-
-
-
-{{--         
-        <div class="sidebar">
-         
-                <div class="scrollbar-inner sidebar-wrapper">
-                    <div class="user">
-                        <div class="photo">
-                            <img src="{{ asset('admin_assets/assets/img/profile.jpg') }}">
-                        </div>
-                        <div class="info">
-                            <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
-                                <span>
-                                    Hizrian
-                                    <span class="user-level">Administrator</span>
-                                    <span class="caret"></span>
-                                </span>
-                            </a>
-                            <div class="clearfix"></div>
-    
-                            <div class="collapse in" id="collapseExample" aria-expanded="true">
-                                <ul class="nav">
-                                    <li>
-                                        <a href="#profile">
-                                            <span class="link-collapse">My Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#edit">
-                                            <span class="link-collapse">Edit Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#settings">
-                                            <span class="link-collapse">Settings</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="nav">
-                        <li class="nav-item active">
-                            <a href="{{ route('home') }}">
-                                <i class="la la-dashboard"></i>
-                                <p>Dashboard</p>
-                                <span class="badge badge-count">5</span>
-                            </a>
-                        </li>
-                       
-                        <show-element>
-                            <li class="nav-item">
-                                <a href="{{ route('form_annonce') }}">
-                                    <i class="la la-table"></i>
-                                    <p>Créer annonce</p>
-                                    <span class="badge badge-count">14</span>
-                                </a>
-                            </li>
-                        </show-element>
-                        <show-element>
-                            <li class="nav-item">
-                                <a href="{{route('mesannonces')}}">
-                                    <i class="la la-keyboard-o"></i>
-                                    <p>Mes annonces </p>
-                                    <span class="badge badge-count">50</span>
-                                </a>
-                            </li>
-                        </show-element>
-                        <show-element>
-                            <li class="nav-item">
-                                <a href="{{route('corbeille')}}">
-                                    <i class="la la-trash-o"></i>
-                                    <p>Ma corbeille </p>
-                                    <span class="badge badge-count">50</span>
-                                </a>
-                            </li>
-                        </show-element>
-                        <show-student-element>
-                            <li class="nav-item">
-                                <a href="{{route("listeAnnonce")}}">
-                                    <i class="la la-th"></i>
-                                    <p>Cours disponibles</p>
-                                    <span class="badge badge-count">6</span>
-                                </a>
-                            </li>
-                        </show-student-element>
-                        
-                        <show-student-element>
-                            <li class="nav-item">
-                                <a href="{{route("cours_inscrit")}}">
-                                    <i class="la la-th"></i>
-                                    <p>Cours inscrits</p>
-                                    <span class="badge badge-count">6</span>
-                                </a>
-                            </li>
-                        </show-student-element>
-                        <li class="nav-item">
-                            <a href="notifications.html">
-                                <i class="la la-bell"></i>
-                                <p>Notifications</p>
-                                <span class="badge badge-success">3</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="typography.html">
-                                <i class="la la-font"></i>
-                                <p>Typography</p>
-                                <span class="badge badge-danger">25</span>
-                            </a>
-                        </li>
-                       
-                        <show-element>
-                            <li class="nav-item">
-                                <a href="icons.html">
-                                    <i class="la la-fonticons"></i>
-                                    <p>Icons</p>
-                                </a>
-                                
-                            </li>
-                        </show-element>
-                        <li class="nav-item">
-                            <toggle-button :user_auth="{{Auth::user()}}"></toggle-button>
-                        </li>
-                       
-                    </ul>
-                </div> --}}
-       
-            
-       
- 
 
 
