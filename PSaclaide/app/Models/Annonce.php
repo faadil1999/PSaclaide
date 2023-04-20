@@ -19,6 +19,7 @@ class Annonce extends Model
         'location',
         'isIndividual',
         'matiere_id',
+        'isAvailable',
         'date',
         'heure',
         'user_id'     

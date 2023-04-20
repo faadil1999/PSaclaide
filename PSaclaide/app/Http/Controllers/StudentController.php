@@ -26,15 +26,19 @@ class StudentController extends Controller
              
             }
         }else{
-            if($annonce->AIndividuel->hasStudent()){
-                return redirect()->route('listeAnnonce')->with('error','Il n\'y a plus de place');
+            // if($annonce->AIndividuel->hasStudent()){
+            //     return redirect()->route('listeAnnonce')->with('error','Il n\'y a plus de place');
                 
-            }
-            else{
-                $annonce->students()->save( Auth::user()->student);
+            // }
+            // else{
+            //     $annonce->students()->save( Auth::user()->student);
                 
-            }
-            
+            // }
+            $annonce->update([
+                "isAvailable"=>0
+            ]);
+            $annonce->students()->save( Auth::user()->student);
+                
             
         }
         return redirect()->route('listeAnnonce')->with('status','Vous vous etes inscrit avec succès');

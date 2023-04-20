@@ -20,6 +20,7 @@ class AIndividuel extends Model
     }
     public function hasStudent()
     {
+        
         return count($this->annonce->students) != 0;
     }
     // public function annonceUnique()
