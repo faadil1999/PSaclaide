@@ -280,6 +280,7 @@ class AdminController extends Controller
         return redirect()->route('corbeille')->with('status','Vous vous etes inscrit avec succès');
     }
 
+    
 }
 
 
